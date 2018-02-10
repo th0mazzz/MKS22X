@@ -25,6 +25,7 @@ public class QueenBoard{
 		    board[row][colIndex] = board[row][colIndex] + 1;
 		}
 	    }
+	    //need to make vertical and diagonal threatened spaces
 	    return true;
 	}else{
 	    return false;
