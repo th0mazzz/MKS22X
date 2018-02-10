@@ -18,10 +18,27 @@ public class QueenBoard{
     }
 
     private boolean addQueen(int row, int col){
-	board[row][col] - 1;
+	if(board[row][col] == 0){
+	    board[row][col] = board[row][col] - 1;
+	    for(int colIndex = 0; colIndex < board[row].length; colIndex++){
+		if(colIndex != col){
+		    board[row][colIndex] = board[row][colIndex] + 1;
+		}
+	    }
+	    return true;
+	}else{
+	    return false;
+	}
     }
 
+	//privtae boolean removeQueen(int row, int col){
+	//}
 
+
+
+
+
+    
 
 
 
@@ -33,8 +50,12 @@ public class QueenBoard{
 
     
     public static void main(String[] args){
-	QueenBoard a = new QueenBoard(3);
+	QueenBoard a = new QueenBoard(5);
 	
+	System.out.println(a);
+
+	a.addQueen(2,2);
+
 	System.out.println(a);
     }
 }
