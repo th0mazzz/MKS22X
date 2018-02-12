@@ -83,8 +83,6 @@ public class QueenBoard{
 
     public boolean solveHelp(int col, int numQueens){
 
-	//col++;
-
 	if(numQueens == board.length){
 	    return true;
 	}
@@ -97,7 +95,7 @@ public class QueenBoard{
 		
 	    if(addQueen(row, col)){
 		solveHelp(col + 1, numQueens + 1);
-	    }  
+	    } 
 	}
 
 	col--;
