@@ -23,6 +23,9 @@ public class QueenBoard{
     }
 
     private boolean addQueen(int row, int col){
+	if(row < 0 || col < 0 || row >= board.length || col >= board.length){
+	    return false;
+	}
 	if(board[row][col] == 0){
 	    board[row][col] = board[row][col] - 1;
 	    addRemoveHelp(row, col, 0, 1, 1);
@@ -40,6 +43,9 @@ public class QueenBoard{
     }
 
     private boolean removeQueen(int row, int col){
+	if(row < 0 || col < 0 || row >= board.length || col >= board.length){
+	    return false;
+	}
 	if(board[row][col] == -1){
 	    board[row][col] = board[row][col] + 1;
 	    addRemoveHelp(row, col, 0, 1, -1);
@@ -72,34 +78,43 @@ public class QueenBoard{
 		}
 	    }
 	}
-	return solveHelp(0, 0, board.length, 0);
+	return solveHelp(0, 0);
     }
 
-    public boolean solveHelp(int row, int col, int n, int numQueens){
-	System.out.println("Row, col, numQueens :" + row + ", " + col + ", " + numQueens);
-	System.out.println(this);
+    public boolean solveHelp(int col, int numQueens){
 
-	for(; col < board[row].length; col++){
-	    int rowIndex = row;
-	    int colIndex = col;
-	    for(; rowIndex < board.length; rowIndex++){
-		if(addQueen(rowIndex, colIndex)){
-		    numQueens++;
-		    while(rowIndex < board.length){
-			return solveHelp(0, 0, n, numQueens);
-			
-		    }
-		}
-	    }
-	}
+	//col++;
 
-
-
-
-	
-	if(numQueens == n){
+	if(numQueens == board.length){
 	    return true;
 	}
+
+	for(int row = 0 ; row < board.length && col >= 0; row++){
+
+	    System.out.println("Add - Row, col, numQueens :" + row + ", " + col + ", "
+			       + numQueens);
+	    System.out.println(this);
+		
+	    if(addQueen(row, col)){
+		solveHelp(col + 1, numQueens + 1);
+	    }  
+	}
+
+	col--;
+	
+	for(int row = 0; row < board.length && col >= 0; row++){
+	    System.out.println("Rem - Row, col, numQueens :" + row + ", " + col + ", "
+			       + numQueens);
+	    System.out.println(this);
+	    
+	    if(removeQueen(row, col)){
+		System.out.println("recursion");
+		solveHelp(col, numQueens - 1);
+	    }
+	    System.out.println("in loop");
+	}
+	System.out.println("numQueens: " + numQueens);
+	System.out.println("escaped both loops");
 	return false;
     }
 
@@ -116,9 +131,15 @@ public class QueenBoard{
 
     
     public static void main(String[] args){
+	QueenBoard center = new QueenBoard (11);
+	
 	QueenBoard a = new QueenBoard(5);
 
 	System.out.println("-----addQueen-----");
+	
+	System.out.println(center);
+	System.out.println(center.addQueen(5, 5));
+	System.out.println(center);
 	
 	System.out.println(a);
 
@@ -150,15 +171,31 @@ public class QueenBoard{
 
 	System.out.println("-----solve-----");
 
-	System.out.println(a.solve());
-	System.out.println(a);
+	//System.out.println(a.solve());
+	//System.out.println(a);
+
+	/*
+	QueenBoard b = new QueenBoard(2);
+
+	System.out.println(b.solve());
+	System.out.println(b);
+
+	QueenBoard c = new QueenBoard(10);
+
+	System.out.println(c.solve());
+	System.out.println(c);
+	*/
+	QueenBoard d = new QueenBoard(4);
+
+	System.out.println(d.solve());
+	System.out.println(d);
 
 	//a.board[2][2] = 2;
 	//System.out.println(a);
 
 	//System.out.println(a.solve());
 	//System.out.println(a);
-
+	
 	
     }
 }
