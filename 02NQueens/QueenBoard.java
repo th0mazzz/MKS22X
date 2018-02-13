@@ -78,55 +78,60 @@ public class QueenBoard{
 		}
 	    }
 	}
-	return solveHelp(0, 0);
+	return solveHelp(0);
     }
 
-    public boolean solveHelp(int col, int numQueens){
+    public boolean solveHelp(int col){
 
-	if(numQueens == board.length){
+	if(col == board.length){
 	    return true;
 	}
 
 	for(int row = 0 ; row < board.length && col >= 0; row++){
 
-	    System.out.println("Add - Row, col, numQueens :" + row + ", " + col + ", "
-			       + numQueens);
-	    System.out.println(this);
-		
-	    if(addQueen(row, col)){
-		solveHelp(col + 1, numQueens + 1);
-	    } 
-	}
-
-	col--;
-	
-	for(int row = 0; row < board.length && col >= 0; row++){
-	    System.out.println("Rem - Row, col, numQueens :" + row + ", " + col + ", "
-			       + numQueens);
-	    System.out.println(this);
+	    //System.out.println("Add - Row, col, numQueens :" + row + ", " + col + ", " + numQueens);
+	    //System.out.println(this);
 	    
-	    if(removeQueen(row, col)){
-		System.out.println("recursion");
-		solveHelp(col, numQueens - 1);
+	    if(addQueen(row, col)){
+		if(solveHelp(col + 1)){
+		    return true;
+		}
+		removeQueen(row, col);
 	    }
-	    System.out.println("in loop");
 	}
-	System.out.println("numQueens: " + numQueens);
-	System.out.println("escaped both loops");
 	return false;
     }
 
+    public int countSolutions(){
+	for(int rowIndex = 0; rowIndex < board.length; rowIndex++){
+	    for(int colIndex = 0; colIndex < board[rowIndex].length; colIndex++){
+		if(board[rowIndex][colIndex] != 0){
+		    throw new IllegalStateException();
+		}
+	    }
+	}
+	return countHelp(0, 0);
+    }
 
-    
+    public int countHelp(int col, int numSolutions){
+	if(col == board.length){
+	    numSolutions++;;
+	}
 
+	for(int row = 0 ; row < board.length && col >= 0; row++){
 
-
-
-
-
-
-
-
+	    //System.out.println("Add - Row, col, numQueens :" + row + ", " + col + ", " + numQueens);
+	    //System.out.println(this);
+	    
+	    if(addQueen(row, col)){
+		if(solveHelp(col + 1)){
+		    numSolutions++;;
+		}
+		removeQueen(row, col);
+	    }
+	}
+	return numSolutions;
+    }
     
     public static void main(String[] args){
 	QueenBoard center = new QueenBoard (11);
@@ -169,10 +174,10 @@ public class QueenBoard{
 
 	System.out.println("-----solve-----");
 
-	//System.out.println(a.solve());
-	//System.out.println(a);
+	System.out.println(a.solve());
+	System.out.println(a);
 
-	/*
+	
 	QueenBoard b = new QueenBoard(2);
 
 	System.out.println(b.solve());
@@ -182,18 +187,30 @@ public class QueenBoard{
 
 	System.out.println(c.solve());
 	System.out.println(c);
-	*/
+	
 	QueenBoard d = new QueenBoard(4);
 
 	System.out.println(d.solve());
 	System.out.println(d);
 
-	//a.board[2][2] = 2;
-	//System.out.println(a);
+	QueenBoard e = new QueenBoard(3);
 
-	//System.out.println(a.solve());
-	//System.out.println(a);
-	
-	
+	System.out.println(e.solve());
+	System.out.println(e);
+
+	//QueenBoard f = new QueenBoard(6);
+
+	//System.out.println(d.board[3][3] = 3);
+	//System.out.println(d.solve());
+	//System.out.println(d);
+
+	System.out.println("-----countSolutions-----");
+
+	QueenBoard g = new QueenBoard(8);
+
+	System.out.println(g.countSolutions());
+	System.out.println(g);
+
+	//work on countSolutions
     }
 }
