@@ -41,7 +41,7 @@ public class QueenBoard{
 	    return false;
 	}
     }
-
+    
     private boolean removeQueen(int row, int col){
 	if(row < 0 || col < 0 || row >= board.length || col >= board.length){
 	    return false;
@@ -127,10 +127,7 @@ public class QueenBoard{
 
 	    if(addQueen(row, col)){
 		numSolutions = numSolutions + countHelp(col + 1);
-		//numSolution++;
 		removeQueen(row, col);
-		
-		//removeQueen(row, col);
 	    }
 	}
 	
@@ -220,6 +217,6 @@ public class QueenBoard{
 	System.out.println(h.countSolutions());
 	System.out.println(h);
 
-	//work on countSolutions
+	//love you Ivan Zhang
     }
 }
