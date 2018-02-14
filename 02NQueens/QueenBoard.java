@@ -14,7 +14,7 @@ public class QueenBoard{
 		    returnString = returnString + "Q ";
 		}
 		else{
-		    returnString = returnString + board[rowIndex][colIndex] + " ";
+		    returnString = returnString + "_" + " ";
 		}
 	    }
 	    returnString = returnString + "\n";
@@ -82,7 +82,7 @@ public class QueenBoard{
     }
 
     public boolean solveHelp(int col){
-	System.out.println(this);
+	//System.out.println(this);
 	if(col == board.length){
 	    return true;
 	}
@@ -115,7 +115,7 @@ public class QueenBoard{
     }
     
     public int countHelp(int col){
-	System.out.println(this);
+	//System.out.println(this);
 
 	int numSolutions = 0;
 	
