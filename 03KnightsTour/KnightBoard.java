@@ -4,6 +4,9 @@ public class KnightBoard{
 
     int[] movesRow = {2,  2, 1, -1, -2, -2,  1, -1};
     int[] movesCol = {1, -1, 2,  2,  1, -1, -2, -2};
+
+    String[] debug = {"2 Down 1 Right", "2 Down 1 Left", "2 Right 1 Down", "2 Right 1 Up",
+		    "2 Up 1 Right", "2 Up 1 Left", "2 Left 1 Down", "2 Left 1 Up"};
     
 
     // Is zero included?
@@ -24,13 +27,27 @@ public class KnightBoard{
 	String returnString = "";
 	for(int row = 0; row < board.length; row++){
 	    for(int col = 0; col < board[row].length; col++){
-		//if(board.length * board[row].length < 10){
-		    returnString += board[row][col] + " ";
-		    //}
-		    //else{
-		    //if(
-		    //returnString += board[row][col] + " ";
-		    //}
+		if(board.length * board[row].length < 10){
+		    if(board[row][col] == 0){
+			returnString += " _ ";
+		    }
+		    else{
+			returnString += " " + board[row][col] + " ";
+		    }
+		}
+		else{
+		    if(board[row][col] < 10){
+			if(board[row][col] == 0){
+			    returnString += " _ ";
+			}
+			else{
+			    returnString += " " + board[row][col] + " ";
+			}
+		    }
+		    else{
+			returnString += board[row][col] + " ";
+		    }
+		}
 	    }
 	    returnString += "\n";
 	}
@@ -38,7 +55,7 @@ public class KnightBoard{
     }
 
     public boolean solve(int startingRow, int startingCol){
-	if(startingRow <= 0 || startingCol <= 0){
+	if(startingRow < 0 || startingCol < 0){
 	    throw new IllegalStateException();
 	}
 	for(int row = 0; row < board.length; row++){
@@ -65,30 +82,40 @@ public class KnightBoard{
 
     private boolean solveH(int row, int col, int level){
 	try{
-	    System.out.println(level + "\n" + this);
+	    System.out.println(level);
+	    System.out.println(Text.go(1,1));
+	    System.out.println("\n" + this);
+	    Text.wait(2000); //adjust this delay
+
+	    //if(level == board.length * board[row].length){
+	    //	return true;
+	    //}
 	    if(board[row][col] == 0){
+		System.out.println("It is 0, replacing it with " + level);
 		board[row][col] = level;
 		level++;
 	    }
 	    for(int loop = 0; loop < movesRow.length; loop++){
-		if(solveH(row + movesRow[loop], col + movesCol[loop], level++)){
+		System.out.println(debug[loop] + ", Loop: " + loop);
+		if(solveH(row + movesRow[loop], col + movesCol[loop], level)){
 		    return true;
 		}
 		//board[row][col] = 0;
 	    }
-	    return true;
+	    return false;
 	}catch(Exception ArrayIndexOutOfBoundsException){
+	    System.out.println("Caught exception");
 	    return false;
 	}
     }
     
     public static void main(String[] args){
 
-	KnightBoard a = new KnightBoard(7, 7);
+	KnightBoard a = new KnightBoard(10, 10);
 
 	//System.out.println(a);
-	//a.solve(3, 3);
-	System.out.println(a);
+	a.solve(0, 0);
+	
 	
 	
     }
