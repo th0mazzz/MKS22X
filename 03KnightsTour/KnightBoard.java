@@ -82,14 +82,16 @@ public class KnightBoard{
 
     private boolean solveH(int row, int col, int level){
 	try{
-	    System.out.println(level);
-	    System.out.println(Text.go(1,1));
+	    System.out.println("Level: " + level);
+	    //System.out.println(Text.go(1,1));
 	    System.out.println("\n" + this);
-	    Text.wait(2000); //adjust this delay
+	    Text.wait(1000); //adjust this delay
 
 	    //if(level == board.length * board[row].length){
 	    //	return true;
 	    //}
+	    System.out.println("Looking at: " + "(" + row + ", " + col + "   Status: ");
+	    System.out.print(board[row][col] == 0);
 	    if(board[row][col] == 0){
 		System.out.println("It is 0, replacing it with " + level);
 		board[row][col] = level;
