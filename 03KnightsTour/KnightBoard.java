@@ -80,6 +80,7 @@ public class KnightBoard{
     }
     */
 
+    /*
     private boolean solveH(int row, int col, int level){
 	try{
 	    System.out.println("Level: " + level);
@@ -87,9 +88,6 @@ public class KnightBoard{
 	    //System.out.println(Text.go(1,1));
 	    System.out.println("\n" + this);
 	    //Text.wait(2); //adjust this delay
-
-	    
-	    
 	    //System.out.println("Looking at: " + "(" + row + ", " + col + ")   Equal to 0?: ");
 	    //System.out.println("Boolean: ");
 	    System.out.println(board[row][col] == 0);
@@ -125,15 +123,54 @@ public class KnightBoard{
 	    return false;
 	}
     }
+    */
+
+    public boolean solveH(int row, int col, int level){
+	/*
+	System.out.println(Text.go(1,1));
+	System.out.println("\n" + this);
+	System.out.println("Level: " + level);
+	Text.wait(0); //adjust this delay
+	*/
+
+	if(row < 0 || row >= board.length || col < 0 || col >= board[row].length){
+	    return false;
+	}
+	
+	
+	
+	
+	if(board[row][col] == 0){
+	    board[row][col] = level;
+	    level++;
+	}
+	else{
+	    return false;
+	}
+
+	for(int loop = 0; loop < movesRow.length; loop++){
+	    //System.out.println("Looking at: (" + movesRow[loop] + ", " + movesCol[loop] + ")");
+	    if(solveH(row + movesRow[loop], col + movesCol[loop], level)){
+		return true;
+	    }
+	}
+
+	if(level - 1 == board.length * board[row].length){
+	    return true;
+	}
+
+	board[row][col] = 0;
+	return false;
+    }
     
     public static void main(String[] args){
 	System.out.print("\033[H\033[2J");  //resets cursor to default location
 	System.out.flush();  //clears the terminal
 
-	KnightBoard a = new KnightBoard(7, 7);
+	KnightBoard a = new KnightBoard(3, 8);
 
 	//System.out.println(a);
-	System.out.println(a.solve(0, 0));
+	System.out.println(a.solve(3, 1));
 	System.out.println(a);
 	
 	
