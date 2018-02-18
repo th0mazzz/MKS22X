@@ -167,10 +167,10 @@ public class KnightBoard{
 	System.out.print("\033[H\033[2J");  //resets cursor to default location
 	System.out.flush();  //clears the terminal
 
-	KnightBoard a = new KnightBoard(3, 8);
+	KnightBoard a = new KnightBoard(5, 5);
 
 	//System.out.println(a);
-	System.out.println(a.solve(3, 1));
+	System.out.println(a.solve(2, 2));
 	System.out.println(a);
 	
 	
