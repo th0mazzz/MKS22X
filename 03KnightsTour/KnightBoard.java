@@ -83,41 +83,58 @@ public class KnightBoard{
     private boolean solveH(int row, int col, int level){
 	try{
 	    System.out.println("Level: " + level);
+	    System.out.println(level - 1);
 	    //System.out.println(Text.go(1,1));
 	    System.out.println("\n" + this);
-	    Text.wait(1000); //adjust this delay
+	    //Text.wait(2); //adjust this delay
 
-	    //if(level == board.length * board[row].length){
-	    //	return true;
-	    //}
-	    System.out.println("Looking at: " + "(" + row + ", " + col + "   Status: ");
-	    System.out.print(board[row][col] == 0);
+	    
+	    
+	    //System.out.println("Looking at: " + "(" + row + ", " + col + ")   Equal to 0?: ");
+	    //System.out.println("Boolean: ");
+	    System.out.println(board[row][col] == 0);
 	    if(board[row][col] == 0){
-		System.out.println("It is 0, replacing it with " + level);
+		//System.out.println("Replacing with " + level);
 		board[row][col] = level;
 		level++;
+	    }else{
+		return false;
 	    }
+	    
 	    for(int loop = 0; loop < movesRow.length; loop++){
-		System.out.println(debug[loop] + ", Loop: " + loop);
+		//System.out.println(debug[loop] + ", Loop: " + loop);
+		//System.out.println("Numbers: " + movesRow[loop] + ", " + movesCol[loop]);
+		//System.out.println("Current location: " + row + ", " + col);		
 		if(solveH(row + movesRow[loop], col + movesCol[loop], level)){
 		    return true;
 		}
 		//board[row][col] = 0;
 	    }
+
+	    //System.out.println(level - 1 == board.length * board[row].length);
+	    if(level - 1 == board.length * board[row].length){
+		//System.out.println("Here!");
+	    	return true;
+	    }
+	    
+	    //System.out.println("Made it to the false (non-exception)");
+	    board[row][col] = 0;
 	    return false;
 	}catch(Exception ArrayIndexOutOfBoundsException){
-	    System.out.println("Caught exception");
+	    //System.out.println("Caught exception");
 	    return false;
 	}
     }
     
     public static void main(String[] args){
+	System.out.print("\033[H\033[2J");  //resets cursor to default location
+	System.out.flush();  //clears the terminal
 
-	KnightBoard a = new KnightBoard(10, 10);
+	KnightBoard a = new KnightBoard(7, 7);
 
 	//System.out.println(a);
-	a.solve(0, 0);
-	
+	System.out.println(a.solve(0, 0));
+	System.out.println(a);
 	
 	
     }
