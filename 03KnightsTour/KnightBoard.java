@@ -136,14 +136,14 @@ public class KnightBoard{
 	    level++;
 	}
 	else{
-	    return 0;
+	    board[row][col] = 0;
 	}
 
 	for(int loop = 0; loop < movesRow.length; loop++){
 	    countH(row + movesRow[loop], col + movesCol[loop], level);
 	    
 	}
-	board[row][col] = 0; //why doesn't moving this into the for loop work >:(
+ //why doesn't moving this into the for loop work >:(
 
 	if(level - 1 == board.length * board[row].length){
 	    numSolutions++;
