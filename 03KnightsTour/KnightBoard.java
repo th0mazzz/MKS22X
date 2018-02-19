@@ -9,19 +9,12 @@ public class KnightBoard{
 		      "2 Up 1 Right", "2 Up 1 Left", "2 Left 1 Down", "2 Left 1 Up"};
     
 
-    // Is zero included?
     public KnightBoard(int startingRows, int startingCols){
 	if(startingRows <= 0 || startingCols <= 0){
 	    throw new IllegalArgumentException();
 	}
-	board = new int[startingRows][startingCols];
+	board = new int[startingRows][startingCols];	
     }
-
-    /* NEED TO UPDATE THIS LATER AFTER NO MORE DEBUGGING
-       Throw IllegalStateException
-       Display 0's as underscores
-       Blank board if never called solve or no solution
-       Follow format on website */
     
     public String toString(){
 	String returnString = "";
@@ -55,8 +48,8 @@ public class KnightBoard{
     }
 
     public boolean solve(int startingRow, int startingCol){
-	if(startingRow < 0 || startingCol < 0){
-	    throw new IllegalStateException();
+	if(startingRow < 0 || startingCol < 0 || startingRow >= board.length || startingCol >= board[startingRow].length){
+	    throw new IllegalArgumentException();
 	}
 	for(int row = 0; row < board.length; row++){
 	    for(int col = 0; col < board[row].length; col++){
@@ -104,7 +97,7 @@ public class KnightBoard{
     }
 
     public int countSolutions(int startingRow, int startingCol){
-	if(startingRow < 0 || startingCol < 0){
+	if(startingRow < 0 || startingCol < 0 || startingRow >= board.length || startingCol >= board[row].length){
 	    throw new IllegalStateException();
 	}
 	for(int row = 0; row < board.length; row++){
@@ -146,8 +139,8 @@ public class KnightBoard{
 	
 	for(int loop = 0; loop < movesRow.length; loop++){
 	    //System.out.println("In loop: " + loop);
-	    numSolutions += countH(row + movesRow[loop], col + movesCol[loop], level);
-	    System.out.println(numSolutions);
+	    numSolutions =+ countH(row + movesRow[loop], col + movesCol[loop], level);
+	    //System.out.println(numSolutions);
 	}
 
 	board[row][col] = 0;
@@ -161,11 +154,11 @@ public class KnightBoard{
 	System.out.print("\033[H\033[2J");  //resets cursor to default location
 	System.out.flush();  //clears the terminal
 
-	KnightBoard a = new KnightBoard(5, 5);
+	KnightBoard a = new KnightBoard(4, 4);
 
 	System.out.println(a);
-	//System.out.println(a.solve(0,0));
-	System.out.println(a.countSolutions(0, 0));
+	System.out.println(a.solve(0,0));
+	//System.out.println(a.countSolutions(0, 0));
 	System.out.println(a);
 
 	/*
