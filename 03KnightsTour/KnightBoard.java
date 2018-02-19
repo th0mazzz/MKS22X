@@ -118,37 +118,41 @@ public class KnightBoard{
     }
 
     public int countH(int row, int col, int level){
-
-	/*
-	  System.out.println(Text.go(1,1));
-	  System.out.println("\n" + this);
-	  System.out.println("Level: " + level);
-	  Text.wait(0); //adjust this delay
-	*/
+	
+	//System.out.println(Text.go(1,1));
+	//System.out.println("\n" + this);
+	//System.out.println("Level: " + level);
+	//Text.wait(0); //adjust this delay
+	
 	int numSolutions = 0;
 	
 	if(row < 0 || row >= board.length || col < 0 || col >= board[row].length){
 	    return 0;
 	}
 
+	
+	if(level - 1 == board.length * board[row].length){
+	    
+	    return 1;
+	    
+	}
+
 	if(board[row][col] == 0){
 	    board[row][col] = level;
 	    level++;
+	}else{
+	    return 0;
 	}
-	else{
-	    board[row][col] = 0;
-	}
-
+	
 	for(int loop = 0; loop < movesRow.length; loop++){
-	    countH(row + movesRow[loop], col + movesCol[loop], level);
-	    
-	}
- //why doesn't moving this into the for loop work >:(
-
-	if(level - 1 == board.length * board[row].length){
-	    numSolutions++;
+	    //System.out.println("In loop: " + loop);
+	    numSolutions += countH(row + movesRow[loop], col + movesCol[loop], level);
+	    System.out.println(numSolutions);
 	}
 
+	board[row][col] = 0;
+
+	
 	return numSolutions;
     }
     
@@ -163,7 +167,17 @@ public class KnightBoard{
 	//System.out.println(a.solve(0,0));
 	System.out.println(a.countSolutions(0, 0));
 	System.out.println(a);
-	
+
+	/*
+	KnightBoard b = new KnightBoard(5, 5);
+	System.out.println(b.countSolutions(3,3));
+
+	KnightBoard c = new KnightBoard(7,7);
+	System.out.println(c.solve(3,3));
+
+	KnightBoard d = new KnightBoard(7,7);
+	System.out.println(d.countSolutions(3,3));
+	*/
 	
     }
 }
