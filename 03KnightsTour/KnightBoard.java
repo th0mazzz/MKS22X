@@ -125,9 +125,7 @@ public class KnightBoard{
 
 	
 	if(level - 1 == board.length * board[row].length){
-	    
 	    return 1;
-	    
 	}
 
 	if(board[row][col] == 0){
