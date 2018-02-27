@@ -73,14 +73,7 @@ public class Maze{
             clearTerminal();
             System.out.println(this);
             wait(20);
-        }
-
-        //COMPLETE SOLVE
-        return -1; //so it compiles
-    }
-
-
-    public static void main(String[]args){
+public static void main(String[]args){
         Maze f;
         f = new Maze("data1.dat");//true animates the maze.
         
