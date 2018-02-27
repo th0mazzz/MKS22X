@@ -1,6 +1,10 @@
 public class KnightBoard{
 
-    int[][] board;
+    int[][] board = { { 1,  0, 19, 14,  3},
+		  {18, 13,  2,  9, 20},
+		  {23,  8,  0,  4, 15},
+		  {12, 17,  6, 21, 10},
+		  { 7, 22, 11, 16,  5} };;
 
     int[] movesRow = {2,  2, 1, -1, -2, -2,  1, -1};
     int[] movesCol = {1, -1, 2,  2,  1, -1, -2, -2};
@@ -13,7 +17,7 @@ public class KnightBoard{
 	if(startingRows <= 0 || startingCols <= 0){
 	    throw new IllegalArgumentException();
 	}
-	board = new int[startingRows][startingCols];	
+	//board = new int[startingRows][startingCols];	
     }
     
     public String toString(){
@@ -124,7 +128,7 @@ public class KnightBoard{
 	}
 
 	
-	if(level - 1 == board.length * board[row].length){
+	if(level  - 1== board.length * board[row].length){
 	    return 1;
 	}
 
@@ -137,8 +141,8 @@ public class KnightBoard{
 	
 	for(int loop = 0; loop < movesRow.length; loop++){
 	    //System.out.println("In loop: " + loop);
-	    numSolutions =+ countH(row + movesRow[loop], col + movesCol[loop], level);
-	    //System.out.println(numSolutions);
+	    numSolutions += countH(row + movesRow[loop], col + movesCol[loop], level);
+	    System.out.println(numSolutions);
 	}
 
 	board[row][col] = 0;
@@ -155,7 +159,7 @@ public class KnightBoard{
 	KnightBoard a = new KnightBoard(5, 5);
 
 	System.out.println(a);
-	//System.out.println(a.solve(3,3));
+	//System.out.println(a.solve(2,4));
 	System.out.println(a.countSolutions(0, 0));
 	System.out.println(a);
 
