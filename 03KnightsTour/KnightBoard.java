@@ -97,7 +97,7 @@ public class KnightBoard{
     }
 
     public int countSolutions(int startingRow, int startingCol){
-	if(startingRow < 0 || startingCol < 0 || startingRow >= board.length || startingCol >= board[row].length){
+	if(startingRow < 0 || startingCol < 0 || startingRow >= board.length || startingCol >= board[startingRow].length){
 	    throw new IllegalStateException();
 	}
 	for(int row = 0; row < board.length; row++){
@@ -152,11 +152,11 @@ public class KnightBoard{
 	System.out.print("\033[H\033[2J");  //resets cursor to default location
 	System.out.flush();  //clears the terminal
 
-	KnightBoard a = new KnightBoard(4, 4);
+	KnightBoard a = new KnightBoard(5, 5);
 
 	System.out.println(a);
-	System.out.println(a.solve(0,0));
-	//System.out.println(a.countSolutions(0, 0));
+	//System.out.println(a.solve(3,3));
+	System.out.println(a.countSolutions(0, 0));
 	System.out.println(a);
 
 	/*
