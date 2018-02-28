@@ -1,10 +1,10 @@
 public class KnightBoard{
 
-    int[][] board = { { 1,  0, 19, 14,  3},
+    int[][] board; /* = { { 1,  0, 19, 14,  3},
 		  {18, 13,  2,  9, 20},
-		  {23,  8,  0,  4, 15},
+		  { 0,  8,  0,  4, 15},
 		  {12, 17,  6, 21, 10},
-		  { 7, 22, 11, 16,  5} };;
+		  { 7,  0, 11, 16,  5} };*/
 
     int[] movesRow = {2,  2, 1, -1, -2, -2,  1, -1};
     int[] movesCol = {1, -1, 2,  2,  1, -1, -2, -2};
@@ -15,9 +15,9 @@ public class KnightBoard{
 
     public KnightBoard(int startingRows, int startingCols){
 	if(startingRows <= 0 || startingCols <= 0){
-	    //throw new IllegalArgumentException();
+	    throw new IllegalArgumentException();
 	}
-	//board = new int[startingRows][startingCols];	
+	board = new int[startingRows][startingCols];	
     }
     
     public String toString(){
@@ -67,10 +67,8 @@ public class KnightBoard{
 
     public boolean solveH(int row, int col, int level){
 	/*
-	  System.out.println(Text.go(1,1));
 	  System.out.println("\n" + this);
 	  System.out.println("Level: " + level);
-	  Text.wait(0); //adjust this delay
 	*/
 
 	if(row < 0 || row >= board.length || col < 0 || col >= board[row].length){
@@ -119,36 +117,39 @@ public class KnightBoard{
 	//System.out.println(Text.go(1,1));
 	//System.out.println("\n" + this);
 	//System.out.println("Level: " + level);
-	//Text.wait(0); //adjust this delay
+	//Text.wait(100); //adjust this delay
+
 	
 	int numSolutions = 0;
 	
 	if(row < 0 || row >= board.length || col < 0 || col >= board[row].length){
 	    return 0;
 	}
-
 	
-	if(level  - 1== board.length * board[row].length){
-	    return 1;
-	}
-
 	if(board[row][col] == 0){
-	    board[row][col] = level;
-	    level++;
-	}else{
-	    return 0;
-	}
+		board[row][col] = level;
+		level++;
+	    }else{
+		return 0;
+	    }
 	
 	for(int loop = 0; loop < movesRow.length; loop++){
-	    //System.out.println("In loop: " + loop);
-	    numSolutions += countH(row + movesRow[loop], col + movesCol[loop], level);
-	    System.out.println(numSolutions);
-	}
 
+	    //System.out.println("Level: " + level + ", numSolutions: " + numSolutions);
+
+
+	    if(level - 1 == board.length * board[row].length){
+		board[row][col] = 0;
+		return 1;
+	    }
+
+	    numSolutions = numSolutions + countH(row + movesRow[loop], col + movesCol[loop], level);
+	    
+	}
+	
 	board[row][col] = 0;
 
-	
-	return numSolutions;
+	return numSolutions ;
     }
     
     
@@ -159,8 +160,8 @@ public class KnightBoard{
 	KnightBoard a = new KnightBoard(5, 5);
 
 	System.out.println(a);
-	//System.out.println(a.solve(2,4));
-	System.out.println(a.countSolutions(0, 0));
+	System.out.println(a.solve(2,2));
+	//System.out.println("number of solutions: " + a.countSolutions(3, 3));
 	System.out.println(a);
 
 	/*
