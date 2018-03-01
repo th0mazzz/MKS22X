@@ -22,28 +22,30 @@ public class Maze{
 
     */
 
-    public Maze(String filename){
-        try{
-	    File storageFile = new File(filename);
-	    Scanner in = new Scanner(storageFile);
+    public Maze(String filename) throws FileNotFoundException{
+	File storageFile = new File(filename);
+	Scanner in = new Scanner(storageFile);
 
-	    while(in.hasNext()){
-		String word = "'" + in.nextInt() + "'";
-		System.out.println(word);
-	    }
-	}catch(FileNotFoundException e){
-	    System.out.println("Caught");
+	String maze = "";
+	    
+	while(in.hasNext()){
+	    String word =  in.nextLine();
+	    maze = maze + word + "\n";
 	}
+
+	System.out.println(maze);
+
+	for(int row = 0; row < //still writing this
     }
     
 
     private void wait(int millis){
-         try {
-             Thread.sleep(millis);
-         }
-         catch (InterruptedException e) {
-         }
-     }
+	try {
+	    Thread.sleep(millis);
+	}
+	catch (InterruptedException e) {
+	}
+    }
 
 
     public void setAnimate(boolean b){
