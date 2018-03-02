@@ -45,6 +45,16 @@ public class Maze{
 	
 	maze = new char[rowLength][colLength];
 
+	int index = 0;
+	while(index < mazeString.length()){
+	    if(mazeString.charAt(index) == '\n'){
+		mazeString = mazeString.substring(0, index) + mazeString.substring(index + 1);
+	    }
+	    index++;
+	}
+
+	System.out.println(mazeString);
+
 	//YOU NEED TO BE ABLE TO PLACE EACH CHAR INTO THE MAZE
 	//YOU CAN DO THIS BY REMOVING ALL \n AND THEN ITERATING
 	
