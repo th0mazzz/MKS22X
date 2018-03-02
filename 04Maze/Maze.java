@@ -53,7 +53,7 @@ public class Maze{
 	    index++;
 	}
 
-	System.out.println(mazeString);
+	for(int colIndex = 0; 
 
 	//YOU NEED TO BE ABLE TO PLACE EACH CHAR INTO THE MAZE
 	//YOU CAN DO THIS BY REMOVING ALL \n AND THEN ITERATING
