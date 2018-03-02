@@ -26,16 +26,41 @@ public class Maze{
 	File storageFile = new File(filename);
 	Scanner in = new Scanner(storageFile);
 
-	String maze = "";
+	String mazeString = "";
+
+	int rowLength = 0;
 	    
 	while(in.hasNext()){
 	    String word =  in.nextLine();
-	    maze = maze + word + "\n";
+	    mazeString = mazeString + word + "\n";
+	    rowLength++;
 	}
 
-	System.out.println(maze);
+	System.out.println(mazeString);
 
-	for(int row = 0; row < //still writing this
+	int colLength = 0;
+	while(mazeString.charAt(colLength) != '\n'){
+	    colLength++;
+	}
+	
+	maze = new char[rowLength][colLength];
+
+	//YOU NEED TO BE ABLE TO PLACE EACH CHAR INTO THE MAZE
+	//YOU CAN DO THIS BY REMOVING ALL \n AND THEN ITERATING
+	
+	/*
+	int index = 0;
+
+	for(int row = 0; row < maze.length; row++){
+	    for(int col = 0; col < maze[row].length; col++){
+		
+	
+		
+		
+	    }
+	}
+
+	*/
     }
     
 
