@@ -23,21 +23,27 @@ public class Maze{
     */
 
     public Maze(String filename) throws FileNotFoundException{
+	
+	setUpMaze(filename);
+	animate = false;
+	
+    }
+    
+    private void setUpMaze(String filename) throws FileNotFoundException{
 	File storageFile = new File(filename);
 	Scanner in = new Scanner(storageFile);
 
 	String mazeString = "";
 
+	//this section of code finds row length and makes maze into string form
 	int rowLength = 0;
-	    
 	while(in.hasNext()){
 	    String word =  in.nextLine();
 	    mazeString = mazeString + word + "\n";
 	    rowLength++;
 	}
 
-	System.out.println(mazeString);
-
+	//this section of code finds column length
 	int colLength = 0;
 	while(mazeString.charAt(colLength) != '\n'){
 	    colLength++;
@@ -46,34 +52,53 @@ public class Maze{
 	maze = new char[rowLength][colLength];
 
 	int index = 0;
+	int numS = 0;
+	int numE = 0;
+
+	System.out.println("MazeLength" + mazeString.length());
 	while(index < mazeString.length()){
 	    if(mazeString.charAt(index) == '\n'){
 		mazeString = mazeString.substring(0, index) + mazeString.substring(index + 1);
 	    }
+	    if(mazeString.charAt(index) == 'E'){
+		numE++;
+	    }
+
+	    if(mazeString.charAt(index) == 'S'){
+		numS++;
+	    }
+
+	    System.out.println(index);
 	    index++;
 	}
 
-	for(int colIndex = 0; 
-
-	//YOU NEED TO BE ABLE TO PLACE EACH CHAR INTO THE MAZE
-	//YOU CAN DO THIS BY REMOVING ALL \n AND THEN ITERATING
 	
-	/*
-	int index = 0;
-
-	for(int row = 0; row < maze.length; row++){
-	    for(int col = 0; col < maze[row].length; col++){
-		
 	
+	System.out.println("numS: " + numS + ", numE: " + numE);
+	
+	int anotherIndex = 0;
+	for(int rowIndex = 0; rowIndex < colLength; rowIndex++){
+	    for(int colIndex = 0; colIndex < rowLength; colIndex++){
 		
+		maze[rowIndex][colIndex] = mazeString.charAt(anotherIndex);
+		anotherIndex++;
 		
 	    }
 	}
 
+	/*
+	System.out.println(mazeString);
+	for(int rowIndex = 0; rowIndex < rowLength; rowIndex++){
+	    for(int colIndex = 0; colIndex < colLength; colIndex++){
+		
+		System.out.print(maze[rowIndex][colIndex]);
+		
+	    }
+	    System.out.println();
+	}
 	*/
     }
     
-
     private void wait(int millis){
 	try {
 	    Thread.sleep(millis);
