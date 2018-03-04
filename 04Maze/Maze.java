@@ -84,9 +84,8 @@ public class Maze{
 	
 	//puts the characters into the 2D array
 	int anotherIndex = 0;
-	for(int rowIndex = 0; rowIndex < colLength; rowIndex++){
-	    for(int colIndex = 0; colIndex < rowLength; colIndex++){
-		
+	for(int rowIndex = 0; rowIndex < rowLength; rowIndex++){
+	    for(int colIndex = 0; colIndex < colLength; colIndex++){
 		maze[rowIndex][colIndex] = mazeString.charAt(anotherIndex);
 		anotherIndex++;
 		
