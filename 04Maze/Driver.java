@@ -6,7 +6,7 @@ public class Driver{
 
 	try{
 	
-	    Maze f = new Maze("data2.dat");//true animates the maze.
+	    Maze f = new Maze("data3.dat");//true animates the maze.
         
 	    f.setAnimate(true);
 	    f.solve();
