@@ -6,10 +6,10 @@ public class Driver{
 
 	try{
 	
-	    Maze f = new Maze("data3.dat");//true animates the maze.
+	    Maze f = new Maze("data1.dat");//true animates the maze.
         
 	    f.setAnimate(true);
-	    f.solve();
+	    System.out.println("Number of @'s: " + f.solve());
 
 	    System.out.println(f);
 	
