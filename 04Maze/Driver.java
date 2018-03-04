@@ -14,7 +14,7 @@ public class Driver{
 	    System.out.println(f);
 	
 	}catch(FileNotFoundException e){
-	    System.out.println("Caught exception");
+	    System.out.println("Caught FileNotFoundException, please recheck your input");
 	}
     }
 }
