@@ -156,7 +156,7 @@ public class Maze{
      	    }
 	}
 	maze[startRow][startCol] = ' ';
-	return solve(startRow, startCol);
+	return solve(startRow, startCol, 0);
     }
 
     /*
@@ -173,7 +173,7 @@ public class Maze{
 	    just nice visually to see.
         All visited spots that are part of the solution are changed to '@'
     */
-    private int solve(int row, int col){
+    private int solve(int row, int col, int numAts){
 
         //automatic animation! You are welcome.
         if(animate){
@@ -183,17 +183,17 @@ public class Maze{
 
             wait(500);
         }
-
+	
         //COMPLETE SOLVE
-
+	
 	if(maze[row][col] == 'E'){
-	    //System.out.println("here! numAts: " + numAts);
-	    return 1;
+	    System.out.println("here! numAts: " + numAts);
+	    return numAts;
 	}
 	
 	if(maze[row][col] == ' '){
 	    maze[row][col] = '@';
-	    // solFoundNum++;
+	    numAts++;
 	}else{
 	    return -1;
 	}
@@ -201,11 +201,13 @@ public class Maze{
 	for(int loop = 0; loop < rowMove.length; loop++){
 	    
 	    System.out.println(debug[loop]);
-	    //System.out.println("numAts: " + numAts);
-	    
-	    if(solve(row + rowMove[loop], col + colMove[loop]) == 1){
-		//System.out.println("other here! numAts: " + numAts);
-		return 1;
+	    System.out.println("numAts: " + numAts);
+
+	    int result = solve(row + rowMove[loop], col + colMove[loop], numAts);
+	    if(result != -1){
+		System.out.println("other here! numAts: " + numAts);
+		System.out.println("result: " + result);
+		return result;
 	    }
 	
 	}
