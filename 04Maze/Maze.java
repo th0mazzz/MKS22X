@@ -178,16 +178,16 @@ public class Maze{
         //automatic animation! You are welcome.
         if(animate){
 
-            //clearTerminal();
+            clearTerminal();
             System.out.println(this);
 
-            wait(500);
+            wait(20);
         }
 	
-        //COMPLETE SOLVE
+        //ACTUAL SOLVE PART
 	
 	if(maze[row][col] == 'E'){
-	    System.out.println("here! numAts: " + numAts);
+	    //System.out.println("here! numAts: " + numAts);
 	    return numAts;
 	}
 	
@@ -200,13 +200,13 @@ public class Maze{
 
 	for(int loop = 0; loop < rowMove.length; loop++){
 	    
-	    System.out.println(debug[loop]);
-	    System.out.println("numAts: " + numAts);
+	    //System.out.println(debug[loop]);
+	    //System.out.println("numAts: " + numAts);
 
 	    int result = solve(row + rowMove[loop], col + colMove[loop], numAts);
 	    if(result != -1){
-		System.out.println("other here! numAts: " + numAts);
-		System.out.println("result: " + result);
+		//System.out.println("other here! numAts: " + numAts);
+		//System.out.println("result: " + result);
 		return result;
 	    }
 	
@@ -216,7 +216,7 @@ public class Maze{
 	return -1;
     }
 
-
+    
 }
 
 
