@@ -109,51 +109,14 @@ public class USACO{
 	    int col1 = Integer.parseInt(in.next());
 	    int row2 = Integer.parseInt(in.next());
 	    int col2 = Integer.parseInt(in.next());
-
-	    silverH(row1, col1, row2, col2, time, field, currentBoard, pastBoard);
 	    
 	return -1;
     }
-
-    private static void silverH(int row, int col, int destRow, int destCol, int time,
-				char[][] field, int[][] currentBoard, int[][] pastBoard){
-
-	for(int rowIndex = 0; rowIndex < field.length; rowIndex++){
-	    for(int colIndex = 0; colIndex < field[row].length; colIndex++){
-		System.out.print(currentBoard[rowIndex][colIndex]);
-	    }
-	    System.out.println();
-	    
-	}
-	
-	int[] rowMove = {1, -1, 0,  0};
-	int[] colMove = {0,  0, 1, -1};
-
-	pastBoard = currentBoard;
-	currentBoard = new int[row][col];
-
-	if(field[row][col] != '*' && time == 0 && row == destRow && col == destCol){
-	    currentBoard[row][col] = currentBoard[row][col] + 1;
-	}
-	
-	for(int loop = 0; loop < 4; loop++){
-	    try{
-		silverH(row + rowMove[loop], col + colMove[loop], destRow, destCol, time - 1,
-			field, currentBoard, pastBoard);
-	    }catch(ArrayIndexOutOfBoundsException e){
-		//Do nothing
-	    }
-	}
-    }
-
-    
-    
-    
     
     public static void main(String[] args){
 	try{
 	    System.out.println(bronze("inputBronze2.dat"));
-	    //silver("inputSilver.dat");
+	    System.out.println(silver("inputSilver.dat"));
 	}catch(FileNotFoundException e){
 	    System.out.println("File not found");
 	}
