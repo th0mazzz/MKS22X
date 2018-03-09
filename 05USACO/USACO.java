@@ -21,23 +21,34 @@ public class USACO{
 
 	    char[][] field = new char[row][col];
 
-	    //System.out.println(row + ", " + col + ", " + time);
-
+	    String data = "";
 	    int counter = 0;
-	    int area = row * col;
-	    for(int rowIndex = 0; rowIndex < row && counter < area; rowIndex++){
-		for(int colIndex = 0; colIndex < col && counter < area; colIndex++){
-		    field[row][col] = in.charAt(counter);//this charAt no good
-		}
-		in.next();
+	    while(in.hasNext() && counter < row){
+		data = data + in.next();
+		counter++;
 	    }
 
+	    int stringCounter = 0;
+	    for(int rowIndex = 0; rowIndex < row; rowIndex++){
+		for(int colIndex = 0; colIndex < col; colIndex++){
+		    field[rowIndex][colIndex] = data.charAt(stringCounter);
+		    stringCounter++;
+		}
+	    }
+
+	    int row1 = Integer.parseInt(in.next());
+	    int col1 = Integer.parseInt(in.next());
+	    int row2 = Integer.parseInt(in.next());
+	    int col2 = Integer.parseInt(in.next());
+	    
+	    
 	    for(int rowIndex = 0; rowIndex < row; rowIndex++){
 		for(int colIndex = 0; colIndex < col; colIndex++){
 		    System.out.print(field[rowIndex][colIndex]);
 		}
+		System.out.println();
 	    }
-
+	    
 	return -1;
     }
     
