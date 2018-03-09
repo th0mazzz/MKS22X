@@ -51,22 +51,31 @@ public class USACO{
 		    innerCounter--;
 		}
 		counter--;
-	    }
-	    
-	    for(int rowIndex = 0; rowIndex < row; rowIndex++){
-		for(int colIndex = 0; colIndex < col; colIndex++){
-		    System.out.print(lake[rowIndex][colIndex] + " ");
-		}
-		System.out.println();
-	    }
-
-	    System.out.println();
-	    
+	    }    
 	}
-	    
+
+	int aggDepthSum = 0;
+	for(int rowIndex = 0; rowIndex < row; rowIndex++){
+	    for(int colIndex = 0; colIndex < col; colIndex++){
+		if(elevation - lake[rowIndex][colIndex] < 0){
+		    lake[rowIndex][colIndex] = 0;
+		}else{
+		    lake[rowIndex][colIndex] = elevation - lake[rowIndex][colIndex];
+		    aggDepthSum = aggDepthSum + lake[rowIndex][colIndex];
+		}
+	    }
+	}
+
 	
-	
-	return -1;
+	/* DEBUGGING PURPOSES
+	for(int rowIndex = 0; rowIndex < row; rowIndex++){
+	    for(int colIndex = 0; colIndex < col; colIndex++){
+		System.out.print(lake[rowIndex][colIndex] + " ");
+	    }
+	    System.out.println();
+	}	
+	*/
+	return aggDepthSum * 72 * 72;
     }
 
     public static int silver (String filename) throws FileNotFoundException{
@@ -143,7 +152,7 @@ public class USACO{
     
     public static void main(String[] args){
 	try{
-	    bronze("inputBronze.dat");
+	    System.out.println(bronze("inputBronze2.dat"));
 	    //silver("inputSilver.dat");
 	}catch(FileNotFoundException e){
 	    System.out.println("File not found");
