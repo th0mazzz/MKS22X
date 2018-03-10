@@ -119,18 +119,7 @@ public class USACO{
 	    
 	    for(int timeElapsed = 0; timeElapsed < time; timeElapsed++){
 
-		//debug loop
-		System.out.println("past");
-		for(int rowI = 0; rowI < row; rowI++){
-		    for(int colI = 0; colI < col; colI++){
-			System.out.print(pastBoard[rowI][colI] + " ");
-		    }
-		    System.out.println();
-		}
-		System.out.println();
-		//debug loop
-
-		currentBoard = new int[row][col];
+      		currentBoard = new int[row][col];
 		
 		for(int rowIndex = 0; rowIndex < row; rowIndex++){
 		    for(int colIndex = 0; colIndex < col; colIndex++){
@@ -146,18 +135,30 @@ public class USACO{
 				//Do nothing
 			    }
 			}
-			currentBoard[rowIndex][colIndex] = neighborSum;
-			
+
+			if(field[rowIndex][colIndex] != '*'){
+			    currentBoard[rowIndex][colIndex] = neighborSum;
+			}
 		    }
 		}
 
 		pastBoard = currentBoard;
-		
+
+		//debug loop
+		System.out.println("past");
+		for(int rowI = 0; rowI < row; rowI++){
+		    for(int colI = 0; colI < col; colI++){
+			System.out.print(pastBoard[rowI][colI] + " ");
+		    }
+		    System.out.println();
+		}
+		System.out.println();
+		//debug loop
 	    }
 	    
 	    
 	    
-	return -1;
+	return currentBoard[row2][col2];
     }
     
     public static void main(String[] args){
