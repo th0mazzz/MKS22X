@@ -110,7 +110,7 @@ public class USACO{
 	    int row2 = Integer.parseInt(in.next());
 	    int col2 = Integer.parseInt(in.next());
 
-	    currentBoard[row1][col1] = 1;
+	    pastBoard[row1][col1] = 1;
 
 	    int[] rowMove = {0,  0, 1, -1};
 	    int[] colMove = {1, -1, 0,  0};
@@ -118,22 +118,44 @@ public class USACO{
 	    //...........................................................................................        me being bored            
 	    
 	    for(int timeElapsed = 0; timeElapsed < time; timeElapsed++){
-		for(int rowIndex = 0; rowIndex < row; rowIndex++){
-		    for(int colIndex = 0; colIndex < col; colIndex++){
-			int neighborSum = 0;
-			for(int lookSides = 0; lookSides < 4; lookSides++){
-			    
-			}
+
+		//debug loop
+		System.out.println("past");
+		for(int rowI = 0; rowI < row; rowI++){
+		    for(int colI = 0; colI < col; colI++){
+			System.out.print(pastBoard[rowI][colI] + " ");
 		    }
-		}
-	    }
-	    
-	    for(int rowIndex = 0; rowIndex < row; rowIndex++){
-		for(int colIndex = 0; colIndex < col; colIndex++){
-		    System.out.print(currentBoard[rowIndex][colIndex]);
+		    System.out.println();
 		}
 		System.out.println();
+		//debug loop
+
+		currentBoard = new int[row][col];
+		
+		for(int rowIndex = 0; rowIndex < row; rowIndex++){
+		    for(int colIndex = 0; colIndex < col; colIndex++){
+			
+			
+
+			int neighborSum = 0;
+			
+			for(int look = 0; look < 4; look++){
+			    try{
+				neighborSum = neighborSum + pastBoard[rowIndex + rowMove[look]][colIndex + colMove[look]];
+			    }catch(ArrayIndexOutOfBoundsException e){
+				//Do nothing
+			    }
+			}
+			currentBoard[rowIndex][colIndex] = neighborSum;
+			
+		    }
+		}
+
+		pastBoard = currentBoard;
+		
 	    }
+	    
+	    
 	    
 	return -1;
     }
