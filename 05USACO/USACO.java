@@ -79,25 +79,25 @@ public class USACO{
     }
 
     public static int silver (String filename) throws FileNotFoundException{
-	    File storageFile = new File(filename);
+	File storageFile = new File(filename); //create scanner and search for file
 	    Scanner in = new Scanner(storageFile);
-	    
-	    int row = Integer.parseInt(in.next());
+
+	    int row = Integer.parseInt(in.next()); //initialize variables
 	    int col = Integer.parseInt(in.next());
 	    int time = Integer.parseInt(in.next());
 
 	    char[][] field = new char[row][col];
 	    int[][] currentBoard = new int[row][col];
 	    int[][] pastBoard = new int[row][col];
-
-	    String data = "";
+	    
+       	    String data = ""; //gather up the characters into a string
 	    int counter = 0;
 	    while(in.hasNext() && counter < row){
 		data = data + in.next();
 		counter++;
 	    }
 
-	    int stringCounter = 0;
+	    int stringCounter = 0; //place characters into 2D array 'field'
 	    for(int rowIndex = 0; rowIndex < row; rowIndex++){
 		for(int colIndex = 0; colIndex < col; colIndex++){
 		    field[rowIndex][colIndex] = data.charAt(stringCounter);
@@ -105,30 +105,26 @@ public class USACO{
 		}
 	    }
 
-	    int row1 = Integer.parseInt(in.next());
-	    int col1 = Integer.parseInt(in.next());
-	    int row2 = Integer.parseInt(in.next());
-	    int col2 = Integer.parseInt(in.next());
+	    int row1 = Integer.parseInt(in.next()) - 1; //initialize variables after field
+	    int col1 = Integer.parseInt(in.next()) - 1;
+	    int row2 = Integer.parseInt(in.next()) - 1;
+	    int col2 = Integer.parseInt(in.next()) - 1;
 
 	    pastBoard[row1][col1] = 1;
 
-	    int[] rowMove = {0,  0, 1, -1};
-	    int[] colMove = {1, -1, 0,  0};
-
-	    //...........................................................................................        me being bored            
+	    int[] rowMove = {0,  0, 1, -1}; //to make code more concise
+	    int[] colMove = {1, -1, 0,  0};        
 	    
-	    for(int timeElapsed = 0; timeElapsed < time; timeElapsed++){
+	    for(int timeElapsed = 0; timeElapsed < time; timeElapsed++){ //loop through arrays 'time' times
 
       		currentBoard = new int[row][col];
 		
-		for(int rowIndex = 0; rowIndex < row; rowIndex++){
+		for(int rowIndex = 0; rowIndex < row; rowIndex++){ //loops through each iteration of array
 		    for(int colIndex = 0; colIndex < col; colIndex++){
-			
-			
 
 			int neighborSum = 0;
 			
-			for(int look = 0; look < 4; look++){
+			for(int look = 0; look < 4; look++){ //adds sums of neighboring cells
 			    try{
 				neighborSum = neighborSum + pastBoard[rowIndex + rowMove[look]][colIndex + colMove[look]];
 			    }catch(ArrayIndexOutOfBoundsException e){
@@ -136,15 +132,15 @@ public class USACO{
 			    }
 			}
 
-			if(field[rowIndex][colIndex] != '*'){
+			if(field[rowIndex][colIndex] != '*'){ //makes cell 'neighborSum' if not tree
 			    currentBoard[rowIndex][colIndex] = neighborSum;
 			}
 		    }
 		}
 
-		pastBoard = currentBoard;
+		pastBoard = currentBoard; //store in a past array 
 
-		//debug loop
+		/*//debug loop
 		System.out.println("past");
 		for(int rowI = 0; rowI < row; rowI++){
 		    for(int colI = 0; colI < col; colI++){
@@ -153,11 +149,9 @@ public class USACO{
 		    System.out.println();
 		}
 		System.out.println();
-		//debug loop
+		//debug loop */
 	    }
-	    
-	    
-	    
+
 	return currentBoard[row2][col2];
     }
     
