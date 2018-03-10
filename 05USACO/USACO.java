@@ -109,6 +109,31 @@ public class USACO{
 	    int col1 = Integer.parseInt(in.next());
 	    int row2 = Integer.parseInt(in.next());
 	    int col2 = Integer.parseInt(in.next());
+
+	    currentBoard[row1][col1] = 1;
+
+	    int[] rowMove = {0,  0, 1, -1};
+	    int[] colMove = {1, -1, 0,  0};
+
+	    //...........................................................................................        me being bored            
+	    
+	    for(int timeElapsed = 0; timeElapsed < time; timeElapsed++){
+		for(int rowIndex = 0; rowIndex < row; rowIndex++){
+		    for(int colIndex = 0; colIndex < col; colIndex++){
+			int neighborSum = 0;
+			for(int lookSides = 0; lookSides < 4; lookSides++){
+			    
+			}
+		    }
+		}
+	    }
+	    
+	    for(int rowIndex = 0; rowIndex < row; rowIndex++){
+		for(int colIndex = 0; colIndex < col; colIndex++){
+		    System.out.print(currentBoard[rowIndex][colIndex]);
+		}
+		System.out.println();
+	    }
 	    
 	return -1;
     }
