@@ -20,7 +20,7 @@ public class USACO{
 	    }
 	}
 
-	//DEBUGGING PURPOSES
+	/*//DEBUGGING PURPOSES 
 	System.out.println("Original");
 	for(int rowIndex = 0; rowIndex < row; rowIndex++){
 	    for(int colIndex = 0; colIndex < col; colIndex++){
@@ -29,54 +29,50 @@ public class USACO{
 	    System.out.println();
 	}
 	System.out.println();
-	//DEBUGGING PURPOSES
+	//DEBUGGING PURPOSES */
 
 	while(in.hasNext()){ //loop until no more instructions
 	    int xcor = Integer.parseInt(in.next()) - 1; //initialize data to be used
 	    int ycor = Integer.parseInt(in.next()) - 1;
 	    int dig = Integer.parseInt(in.next());
 
-	    //DEBUGGING
+	    /*//DEBUGGING
 	    System.out.println("xcor: " + xcor + ", ycor: " + ycor);
 	    System.out.println("dig: " + dig);
+	    */
 	    
-	    int counter = 3; //locate the greatest number in the 3x3 grid specified
-	    int greatestNum = -1;
-	    for(int rowIndex = xcor; rowIndex >= 0 && rowIndex < row && counter > 0; rowIndex++){
-		int innerCounter = 3;
-		for(int colIndex = ycor; colIndex >= 0 && colIndex < col && innerCounter > 0; colIndex++){
+	    int greatestNum = -1; //locate the greatest number in the 3x3 grid specified
+	    for(int rowIndex = xcor; rowIndex >= 0 && rowIndex < xcor + 3; rowIndex++){
+		for(int colIndex = ycor; colIndex >= 0 && colIndex < ycor + 3; colIndex++){
 		    if(lake[rowIndex][colIndex] > greatestNum){
 			greatestNum = lake[rowIndex][colIndex];
-			innerCounter--;
 		    }
-		    innerCounter--;
 		}
-		counter--;
 	    }
 
+	    //System.out.println("greatest: " + greatestNum); //DEBUGGING
+
+		
 	    int newNum = greatestNum - dig; //calculate the new value (high - dig amount)
 
-	    counter = 3; //replace numbers larger than newNum with newNum in 3x3 grid
-	    for(int rowIndex = xcor; rowIndex >= 0 && rowIndex < row && counter > 0; rowIndex++){
-		int innerCounter = 3;
-		for(int colIndex = ycor; colIndex >= 0 && colIndex < col && innerCounter > 0; colIndex++){
+	    //replace numbers larger than newNum with newNum in 3x3 grid
+	    for(int rowIndex = xcor; rowIndex >= 0 && rowIndex < xcor + 3; rowIndex++){
+		for(int colIndex = ycor; colIndex >= 0 && colIndex < ycor + 3; colIndex++){
 		    if(lake[rowIndex][colIndex] > newNum){
 			lake[rowIndex][colIndex] = newNum;
 		    }
-		    innerCounter--;
 		}
-		counter--;
 	    }
 
-	    //DEBUGGING PURPOSES
-	for(int rowIndex = 0; rowIndex < row; rowIndex++){
-	    for(int colIndex = 0; colIndex < col; colIndex++){
-		System.out.print(lake[rowIndex][colIndex] + "  ");
+	    /*//DEBUGGING PURPOSES
+	    for(int rowIndex = 0; rowIndex < row; rowIndex++){
+		for(int colIndex = 0; colIndex < col; colIndex++){
+		    System.out.print(lake[rowIndex][colIndex] + "  ");
+		}
+		System.out.println();
 	    }
 	    System.out.println();
-	}
-	System.out.println();
-	//DEBUGGING PURPOSES
+	    //DEBUGGING PURPOSES*/
 	    
 	}
 	                     //once instructions all done
