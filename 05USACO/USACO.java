@@ -4,10 +4,10 @@ import java.io.*;
 public class USACO{
 
     public static int bronze(String filename) throws FileNotFoundException{
-	File storageFile = new File(filename);
+	File storageFile = new File(filename); //makes scanner for file
 	Scanner in = new Scanner(storageFile);
 
-	int row = Integer.parseInt(in.next());
+	int row = Integer.parseInt(in.next()); //initializes variables
 	int col = Integer.parseInt(in.next());
 	int elevation = Integer.parseInt(in.next());
 	int num = Integer.parseInt(in.next()); //USELESS PARAMETER
@@ -20,12 +20,27 @@ public class USACO{
 	    }
 	}
 
-	while(in.hasNext()){
-	    int xcor = Integer.parseInt(in.next());
-	    int ycor = Integer.parseInt(in.next());
+	//DEBUGGING PURPOSES
+	System.out.println("Original");
+	for(int rowIndex = 0; rowIndex < row; rowIndex++){
+	    for(int colIndex = 0; colIndex < col; colIndex++){
+		System.out.print(lake[rowIndex][colIndex] + "  ");
+	    }
+	    System.out.println();
+	}
+	System.out.println();
+	//DEBUGGING PURPOSES
+
+	while(in.hasNext()){ //loop until no more instructions
+	    int xcor = Integer.parseInt(in.next()) - 1; //initialize data to be used
+	    int ycor = Integer.parseInt(in.next()) - 1;
 	    int dig = Integer.parseInt(in.next());
+
+	    //DEBUGGING
+	    System.out.println("xcor: " + xcor + ", ycor: " + ycor);
+	    System.out.println("dig: " + dig);
 	    
-	    int counter = 3;
+	    int counter = 3; //locate the greatest number in the 3x3 grid specified
 	    int greatestNum = -1;
 	    for(int rowIndex = xcor; rowIndex >= 0 && rowIndex < row && counter > 0; rowIndex++){
 		int innerCounter = 3;
@@ -39,9 +54,9 @@ public class USACO{
 		counter--;
 	    }
 
-	    int newNum = greatestNum - dig;
+	    int newNum = greatestNum - dig; //calculate the new value (high - dig amount)
 
-	    counter = 3;
+	    counter = 3; //replace numbers larger than newNum with newNum in 3x3 grid
 	    for(int rowIndex = xcor; rowIndex >= 0 && rowIndex < row && counter > 0; rowIndex++){
 		int innerCounter = 3;
 		for(int colIndex = ycor; colIndex >= 0 && colIndex < col && innerCounter > 0; colIndex++){
@@ -51,10 +66,21 @@ public class USACO{
 		    innerCounter--;
 		}
 		counter--;
-	    }    
-	}
+	    }
 
-	int aggDepthSum = 0;
+	    //DEBUGGING PURPOSES
+	for(int rowIndex = 0; rowIndex < row; rowIndex++){
+	    for(int colIndex = 0; colIndex < col; colIndex++){
+		System.out.print(lake[rowIndex][colIndex] + "  ");
+	    }
+	    System.out.println();
+	}
+	System.out.println();
+	//DEBUGGING PURPOSES
+	    
+	}
+	                     //once instructions all done
+	int aggDepthSum = 0; //add up all values subtracted from elevation
 	for(int rowIndex = 0; rowIndex < row; rowIndex++){
 	    for(int colIndex = 0; colIndex < col; colIndex++){
 		if(elevation - lake[rowIndex][colIndex] < 0){
@@ -67,15 +93,16 @@ public class USACO{
 	}
 
 	
-	/* DEBUGGING PURPOSES
+	//DEBUGGING PURPOSES
 	for(int rowIndex = 0; rowIndex < row; rowIndex++){
 	    for(int colIndex = 0; colIndex < col; colIndex++){
-		System.out.print(lake[rowIndex][colIndex] + " ");
+		System.out.print(lake[rowIndex][colIndex] + "  ");
 	    }
 	    System.out.println();
-	}	
-	*/
-	return aggDepthSum * 72 * 72;
+	}
+	//DEBUGGING PURPOSES
+	
+	return aggDepthSum * 72 * 72; //multiply by inches (6ft = 72in)
     }
 
     public static int silver (String filename) throws FileNotFoundException{
@@ -157,8 +184,8 @@ public class USACO{
     
     public static void main(String[] args){
 	try{
-	    System.out.println(bronze("inputBronze2.dat"));
-	    System.out.println(silver("inputSilver.dat"));
+	    System.out.println(bronze("inputBronze.dat"));
+	    //System.out.println(silver("inputSilver.dat"));
 	}catch(FileNotFoundException e){
 	    System.out.println("File not found");
 	}
