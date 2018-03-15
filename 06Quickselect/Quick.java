@@ -30,32 +30,31 @@ public class Quick{
 	return back;
     }
     
-    public static int quickselect(int []data, int k){
+    public static int quickselect(int[] data, int k){
 
-	
-	
+	int start = 0;
+	int end = data.length - 1;
+	int currentIndex = partition(data, start, end);
 
-	return -1; //should return k'th smallest value
+	while(currentIndex != k){
+	    if(currentIndex > k){
+		end--;
+	    }
+	    else{
+		start++;
+	    }
+	    currentIndex = partition(data, start, end);
+	}
+
+
+	System.out.println(data[currentIndex]);
+	return data[currentIndex]; //should return k'th smallest value
     }
 
 
     
 
     public static void main(String[] args){
-
-	//Test for partition
-	int[] cool = {0, 5, 2, 7, 4, 3, 8, 1, 9, 6};
-
-	for(int index = 0; index < cool.length; index++){
-	    System.out.print(cool[index] + " ");
-	}
-	
-	System.out.println("returned: " + partition(cool, 0, 9));
-	
-	for(int index = 0; index < cool.length; index++){
-	    System.out.print(cool[index] + " ");
-	}
-
 	
 	int[]ary = { 2, 10, 15, 23, 0,  5};  //sorted :  {0,2,5,10,15,23}
 	quickselect( ary , 0 );// would return 0
