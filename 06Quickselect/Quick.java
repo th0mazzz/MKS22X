@@ -1,60 +1,41 @@
 public class Quick{
 
-    public int partition(int[] data, int start, int end){
+    public static int partition(int[] data, int start, int end){
 	int pivot = (int)(start + Math.random() * ((end - start) + 1));
 	int pivotEle = data[pivot];
 
 	int temp = data[0];
 	data[0] = pivotEle;
 	data[pivot] = temp;
-	
-	for(int front = 1, back = data.length - 1; front <= back;){
 
-	    System.out.println("front: " + data[front]);
-	    System.out.println("back: " + data[back]);
-	    System.out.println("pivot: " + pivotEle);
-	    
+	int front = 1;
+	int back = data.length - 1;
+	for(; front <= back;){
+
 	    if(data[front] > pivotEle){
 		int temper = data[front];
 		data[front] = data[back];
 		data[back] = temper;
 		back--;
-		//System.out.println("Swapped index " + front + " and " + back);
 	    }else{
 		front++;
 	    }
-
 	    
-	    for(int index = 0; index < data.length; index++){
-		System.out.print(data[index] + " ");
-	    }
-	    
-	    //NEED TO WORK ON
 	}
 
-	
-	for(int index = 0; index < data.length; index++){
-	    
-	    System.out.println("comparing: " + data[0] + " and " + data[index]);
-	    
-	    if(pivotEle < data[index]){
-		int temper = data[0];
-		data[0] = data[index - 1];
-		data[index - 1] = temper;
-		return index - 1;
-	    }
-	}
+	int temporary = data[0];
+	data[0] = data[back];
+	data[back] = temporary;
 
-	int temper = data[0];
-	data[0] = data[data.length - 1];
-	data[data.length - 1] = temper;
-	
-	return data.length - 1;
+	return back;
     }
     
     public static int quickselect(int []data, int k){
-	//return the value that is the kth smallest value of the array. 
-	//use your partition method to help you accomplish this.
+
+	
+	
+
+	return -1; //should return k'th smallest value
     }
 
 
@@ -62,6 +43,20 @@ public class Quick{
 
     public static void main(String[] args){
 
+	//Test for partition
+	int[] cool = {0, 5, 2, 7, 4, 3, 8, 1, 9, 6};
+
+	for(int index = 0; index < cool.length; index++){
+	    System.out.print(cool[index] + " ");
+	}
+	
+	System.out.println("returned: " + partition(cool, 0, 9));
+	
+	for(int index = 0; index < cool.length; index++){
+	    System.out.print(cool[index] + " ");
+	}
+
+	
 	int[]ary = { 2, 10, 15, 23, 0,  5};  //sorted :  {0,2,5,10,15,23}
 	quickselect( ary , 0 );// would return 0
 	quickselect( ary , 1 );//  would return 2
