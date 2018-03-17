@@ -1,19 +1,20 @@
 public class Quick{
 
     public static int partition(int[] data, int start, int end){
-
+	
 	for(int i = 0; i < data.length; i++){
 	    System.out.print(data[i] + " ");
 	}
 	System.out.println();
 	
-	int pivot = (int)(start + Math.random() * ((end - start) + 1));
-	System.out.println("Random index chosen: " + pivot);
+	int pivot = (int)(start + Math.random() * ((end - start)));
+	//System.out.println("Random index chosen: " + pivot);
 	int pivotEle = data[pivot];
+	/*
 	System.out.println("Pivot element: " + pivotEle);
 	System.out.println();
 	System.out.println("["+start+", "+end+"]");
-
+	*/
 	int temp = data[0];
 	data[0] = pivotEle;
 	data[pivot] = temp;
@@ -45,7 +46,8 @@ public class Quick{
 	int end = data.length - 1;
 	int currentIndex = partition(data, start, end);
 
-	while(currentIndex != k){
+	//SOMETHING BROKEN HERE WITH QUICKSELECT
+	while(currentIndex != k && start <= end){
 	    if(currentIndex > k){
 		end--;
 	    }
@@ -55,7 +57,7 @@ public class Quick{
 	    currentIndex = partition(data, start, end);
 	}
 
-	System.out.println(data[currentIndex]);
+	System.out.println("return: " + data[currentIndex] + "\n");
 	return data[currentIndex]; //should return k'th smallest value
     }
 
@@ -64,23 +66,26 @@ public class Quick{
 
     public static void main(String[] args){
 
+	
+	//Partition testing
 	/*
-	//Partition testing 
 	Quick test = new Quick();
 	int[] cool = {0, 5, 2, 7, 4, 3, 8, 1, 9, 6};
 
+	System.out.println("***********Partition***********");
 	for(int index = 0; index < cool.length; index++){
 	    System.out.print(cool[index] + " ");
 	}
+	System.out.println();
 	
 	System.out.println("returned: " + test.partition(cool, 0, 9));
 	
 	for(int index = 0; index < cool.length; index++){
 	    System.out.print(cool[index] + " ");
-	}
+	}	
+
+	System.out.println("***********QuickSelect*************");
 	*/
-	
-	
 	int[]ary = { 2, 10, 15, 23, 0,  5};  //sorted :  {0,2,5,10,15,23}
 	quickselect( ary , 0 );// would return 0
 	quickselect( ary , 1 );//  would return 2
