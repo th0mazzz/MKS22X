@@ -37,6 +37,34 @@ public class Quick{
 	
     }
 
+    public static int quickselect(int[] data, int k){
+	
+	int front = 0;
+	int back = data.length - 1;
+	int current = partition(data, front, back);
+
+	//SOMETHING IS STILL WRONG
+	//IT STILL DISPLAYS SEEMINGLY RANDOM ANSWERS >:(
+	
+	while(current != k){
+
+	    System.out.println(toString(data));
+	    
+	    if(current > k){
+		back = current - 1;
+	    }
+	    else{
+		front = current + 1;
+	    }
+
+	    current = partition(data, front, back);
+	}
+
+	System.out.println(data[current]);
+	return data[current];
+	
+    }
+    
     public static String toString(int[] data){
 	String returnString = "";
 	for(int i = 0; i < data.length; i++){
@@ -49,10 +77,15 @@ public class Quick{
 
 	int[] array = {999, 1, 4, 2, 998, 3, 997, 0};
 
-	System.out.println(toString(array));
-	partition(array, 0, 7);
-	
-	
+	//System.out.println(toString(array));
+	int[]ary = { 2, 10, 15, 23, 0,  5};  //sorted :  {0,2,5,10,15,23}
+	quickselect( ary , 0 ); //would return 0
+	quickselect( ary , 1 );  //would return 2
+	quickselect( ary , 2 );  //would return 5
+	quickselect( ary , 3 );  //would return 10
+	quickselect( ary , 4 );  //would return 15
+	quickselect( ary , 5 );  //would return 23
+	    
     }
-
+    
 }
