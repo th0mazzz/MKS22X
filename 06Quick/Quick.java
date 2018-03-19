@@ -11,43 +11,26 @@ public class Quick{
 
 	int pivot = (int)(start + Math.random() * ((end - start)));	
 	int pivotEle = data[pivot];
-	//System.out.println("pivot index: " + pivot);
-	//System.out.println("pivot element: " + pivotEle);
-
-	//System.out.println(toString(data) + "\n");
 	
 	swap(data, start, pivot);
 
-	int front = start+1;
+	int front = start + 1;
 	int back = end;
 
 	while(front <= back){
-	    //System.out.println("["+front+", "+back+"]");
-	    //System.out.println(toString(data));
-
-	    // System.out.println("front: " + front + ", back: " + back + "\n");
-	    //System.out.println(toString(data));
-	    
-	    if(pivotEle < data[front]){
-		//System.out.println(pivotEle + " is smaller than " + data[front]);
+      	    if(pivotEle < data[front]){
 		swap(data, front, back);
 		back--;
 	    }
 	    else{
-		//System.out.println(pivotEle + " is larger than or equal to " + data[front]);
 		front++;
 	    }
 	}
 
 	swap(data, start, back);
 
-	
-	//System.out.println(toString(data));
-	//System.out.println(back);
-
-	//System.out.println("-------------------------------------------");
 	return back;
-	
+
     }
     
 
@@ -57,16 +40,9 @@ public class Quick{
 	
 	int front = 0;
 	int back = data.length - 1;
-	//System.out.println("Partiton called");
 	int current = partition(data, front, back);
-	//System.out.println("Partiton ended");
-	//SOMETHING IS STILL WRONG
-	//IT STILL DISPLAYS SEEMINGLY RANDOM ANSWERS >:(
 	
 	while(current != k){
-	    //System.out.println("k: " + k);
-
-	    //System.out.println(toString(data));
 	    
 	    if(current > k){
 		back = current - 1;
@@ -75,12 +51,9 @@ public class Quick{
 		front = current + 1;
 	    }
 
-	    //System.out.println("Partiton called");
 	    current = partition(data, front, back);
-	    //System.out.println("Partiton ended");
 	}
 
-	System.out.println("quickselect: " + data[current]);
 	return data[current];
 	
     }
