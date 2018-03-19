@@ -57,6 +57,17 @@ public class Quick{
 	return data[current];
 	
     }
+
+    public static void quicksort(int[] data){
+	int[] ordered = new int[data.length];
+	
+	for(int i = 0; i < ordered.length; i++){
+	    ordered[i] = quickselect(data, i);
+	}
+	
+	data = ordered;
+	
+    }
     
     public static String toString(int[] data){
 	String returnString = "";
@@ -77,17 +88,24 @@ public class Quick{
 	    System.out.println(toString(array));
 	}
 	*/
-	//System.out.println(toString(array));
+	
+	
 	
 	int[]ary = { 2, 10, 15, 23, 0,  5};  //sorted :  {0,2,5,10,15,23}
-	//quickselect( ary , 0 ); //would return 0
+
+	System.out.println(toString(ary));
 	
+	/*quickselect( ary , 0 ); //would return 0
 	quickselect( ary , 1 );  //would return 2
 	quickselect( ary , 2 );  //would return 5
 	quickselect( ary , 3 );  //would return 10
 	quickselect( ary , 4 );  //would return 15
 	quickselect( ary , 5 );  //would return 23
-	
+	*/
+
+	quicksort(ary);
+
+	System.out.println(toString(ary));
     }
     
 }
