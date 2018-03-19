@@ -5,6 +5,7 @@ public class Quick{
 	data[index1] = data[index2];
 	data[index2] = temp;
     }
+
     
     public static int partition(int[] data, int start, int end){
 
@@ -48,6 +49,9 @@ public class Quick{
 	return back;
 	
     }
+    
+
+    //public static WRITE WITH DUTCH 
 
     public static int quickselect(int[] data, int k){
 	
@@ -91,7 +95,7 @@ public class Quick{
 
     public static void main(String[] args){
 
-	/*
+	
 	int[] array = {999, 1, 4, 2, 998, 3, 997, 0};
 
 	for(int i = 0; i < 1; i++){
@@ -99,7 +103,7 @@ public class Quick{
 	    System.out.println("partition returns: " + partition (array, 0, 7));
 	    System.out.println(toString(array));
 	}
-	*/
+	
 	//System.out.println(toString(array));
 	
 	int[]ary = { 2, 10, 15, 23, 0,  5};  //sorted :  {0,2,5,10,15,23}
@@ -109,7 +113,7 @@ public class Quick{
 	//quickselect( ary , 2 );  //would return 5
 	//quickselect( ary , 3 );  //would return 10
 	//quickselect( ary , 4 );  //would return 15
-	quickselect( ary , 5 );  //would return 23
+	//quickselect( ary , 5 );  //would return 23
 	
     }
     
