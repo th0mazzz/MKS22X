@@ -6,7 +6,7 @@ public class Quick{
 	data[index2] = temp;
     }
 
-    
+    /*
     public static int partition(int[] data, int start, int end){
 
 	int pivot = (int)(start + Math.random() * ((end - start)));	
@@ -32,16 +32,72 @@ public class Quick{
 	return back;
 
     }
+    */
     
 
-    //public static WRITE WITH DUTCH 
+    public static int[] partition(int[] data, int start, int end){
 
+	int pivot = (int)(start + Math.random() * ((end - start)));	
+	int pivotEle = data[pivot];
+
+	swap(data, start, pivot); //puts pivot to front
+	
+	int low = start;
+	int high = end;
+	int current = start + 1;
+	int lessThan = start;
+	int greaterThan = end;
+
+	while(current <= greaterThan){ //until current hits greaterThanCurrent section
+	    
+	    if(data[current] == pivotEle){ //just leave it be
+		current++;
+	    }
+	    else{
+		if(data[current] < pivotEle){ //move to greaterThan and greaterThan--
+		    swap(data, current, lessThan);
+		    current++;
+		    lessThan++;
+		}
+		else{
+       		    swap(data, current, greaterThan); //move to lessThan and lessThan--
+		    greaterThan--;
+		}
+	    }
+	    
+	}
+
+	int[] out = new int[2]; //returns values for when lessThan and greaterThans' indices
+	out[0] = lessThan;
+	out[1] = greaterThan;
+
+	return out; //returns mentioned indicies
+	
+    }
+    
     public static int quickselect(int[] data, int k){
 	
 	int front = 0;
 	int back = data.length - 1;
-	int current = partition(data, front, back);
-	
+
+	int[] inputRange = partition(data, front, back); //uses the indicies from partition
+
+	while(k > inputRange[1] || k < inputRange[0]){ //while we are NOT at kth element
+	    
+	    if(inputRange[0] > k){ //move closer to k
+		back = inputRange[0] - 1;
+	    }
+	    if(inputRange[1] < k){ //move closer to k
+		front = inputRange[1] + 1;
+	    }
+
+	    inputRange = partition(data, front, back); //select a new range based on updates
+	}
+
+	//System.out.println(data[inputRange[0]]);
+	return data[inputRange[0]]; //the kth smallest element
+	    
+	/*
 	while(current != k){
 	    
 	    if(current > k){
@@ -55,10 +111,13 @@ public class Quick{
 	}
 
 	return data[current];
-	
+	*/
     }
 
     public static void quicksort(int[] data){
+
+	/*
+	//fun while you lasted easy code
 	int[] ordered = new int[data.length];
 	
 	for(int i = 0; i < ordered.length; i++){
@@ -66,7 +125,7 @@ public class Quick{
 	}
 	
 	data = ordered;
-	
+	*/
     }
     
     public static String toString(int[] data){
@@ -84,7 +143,7 @@ public class Quick{
 
 	for(int i = 0; i < 1; i++){
 	    System.out.println(toString(array));
-	    System.out.println("partition returns: " + partition (array, 0, 7));
+	    System.out.println("partition returns: " + toString(partition(array, 0, 7)));
 	    System.out.println(toString(array));
 	}
 	*/
@@ -92,10 +151,12 @@ public class Quick{
 	
 	
 	int[]ary = { 2, 10, 15, 23, 0,  5};  //sorted :  {0,2,5,10,15,23}
-
-	System.out.println(toString(ary));
+	//int[] ary = {0,0,0,0,0,0,1,1,1,1,1,2,2,2,2,2,2};
 	
-	/*quickselect( ary , 0 ); //would return 0
+	System.out.println(toString(ary));
+
+	/*
+	quickselect( ary , 0 ); //would return 0
 	quickselect( ary , 1 );  //would return 2
 	quickselect( ary , 2 );  //would return 5
 	quickselect( ary , 3 );  //would return 10
@@ -103,8 +164,10 @@ public class Quick{
 	quickselect( ary , 5 );  //would return 23
 	*/
 
-	quicksort(ary);
+	//System.out.println(toString(partition(ary)));
 
+	quicksort(ary);
+	
 	System.out.println(toString(ary));
     }
     
