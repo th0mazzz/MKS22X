@@ -115,7 +115,24 @@ public class Quick{
     }
 
     public static void quicksort(int[] data){
+	System.out.println("Hehhhh");
+	quicksortHelp(data, 0, data.length - 1);
+	
+    }
 
+    public static void quicksortHelp(int[] data, int front, int back){
+	int[] range = partition(data, front, back);
+
+	if(front != back){
+	    //System.out.println("front: " + front + ", " + back);
+	    quicksortHelp(data, front + 1, back);
+	    quicksortHelp(data, front, back - 1);
+
+	}
+	
+    
+	
+	
 	/*
 	//fun while you lasted easy code
 	int[] ordered = new int[data.length];
@@ -137,7 +154,7 @@ public class Quick{
     }
 
     public static void main(String[] args){
-
+	
 	/*
 	int[] array = {999, 1, 4, 2, 998, 3, 997, 0};
 
@@ -149,11 +166,10 @@ public class Quick{
 	*/
 	
 	
-	
 	int[]ary = { 2, 10, 15, 23, 0,  5};  //sorted :  {0,2,5,10,15,23}
 	//int[] ary = {0,0,0,0,0,0,1,1,1,1,1,2,2,2,2,2,2};
 	
-	System.out.println(toString(ary));
+	//System.out.println(toString(ary));
 
 	/*
 	quickselect( ary , 0 ); //would return 0
