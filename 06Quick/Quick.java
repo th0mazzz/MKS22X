@@ -115,7 +115,6 @@ public class Quick{
     }
 
     public static void quicksort(int[] data){
-	System.out.println("Hehhhh");
 	quicksortHelp(data, 0, data.length - 1);
 	
     }
