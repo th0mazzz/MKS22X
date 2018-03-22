@@ -21,46 +21,51 @@ public class Merge{
 	msort(temp, data, front, middle); //first half
 	msort(temp, data, middle + 1, back); //other half
 	merge(data, temp, front, middle, middle + 1, back);
-	
+
+	/*
+	System.out.println("data: " + toString(data));
+	System.out.println("temp: " + toString(temp));
+	*/
     }
     
     public static void merge(int[] data, int[] temp, int front, int middle, int middle2, int back){
 	for(int index = front; index <= back; index++){
-	    
+
+	    /*
 	    System.out.println("front: " + front);
 	    System.out.println("mid1: " + middle);
 	    System.out.println("mid2: " + middle2);
 	    System.out.println("back: " + back);
 
 	    System.out.println();
-
+	    */
 	    
 	    //System.out.println("dataFront: " + data[front] + ", dataMiddle2: " + data[middle2]);
 	    
 	    if(front <= middle){
 		if(middle2 <= back){
-		    if(data[front] < data[middle2]){
-			temp[index] = data[front];
+		    if(temp[front] < temp[middle2]){
+			data[index] = temp[front];
 			front++;
 		    }
 		    else{
-			temp[index] = data[middle2];
+			data[index] = temp[middle2];
 			middle2++;
 		    }
 		}
 		else{
-		    temp[index] = data[front];
+		    data[index] = temp[front];
 		    front++;
 		}
 	    }
 	    else{
-		temp[index] = data[middle2];
+		data[index] = temp[middle2];
 		middle2++;
 	    }
 
 
 	    
-	} //closes for
+	} //closes for loop
 	
 	
 	    
