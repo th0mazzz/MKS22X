@@ -35,23 +35,27 @@ public class Merge{
 	    System.out.println();
 
 	    
-	    System.out.println("dataFront: " + data[front] + ", dataMiddle2: " + data[middle2]);
+	    //System.out.println("dataFront: " + data[front] + ", dataMiddle2: " + data[middle2]);
 	    
-	    if(data[front] < data[middle2]){
-		if(front <= middle){
+	    if(front <= middle){
+		if(middle2 <= back){
+		    if(data[front] < data[middle2]){
+			temp[index] = data[front];
+			front++;
+		    }
+		    else{
+			temp[index] = data[middle2];
+			middle2++;
+		    }
+		}
+		else{
 		    temp[index] = data[front];
 		    front++;
-		}else{
-		    
 		}
 	    }
 	    else{
-		if(middle2 <= back){
-		    temp[index] = data[middle2];
-		    middle2++;
-		}else{
-
-		}
+		temp[index] = data[middle2];
+		middle2++;
 	    }
 
 
@@ -73,14 +77,15 @@ public class Merge{
     }
 
     public static void main(String[] args){
-	/*
+       
 	int[] test = {3, 0, 6, 2, 1, 4};
 	System.out.println(toString(test));
 	mergesort(test);
 	System.out.println(toString(test));
 
 	System.out.println("-----------------*************----------------");
-	*/
+       
+	
 	int[] test2 = {3, 1};
 	System.out.println(toString(test2));
 	mergesort(test2);
