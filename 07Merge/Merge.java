@@ -11,17 +11,30 @@ public class Merge{
     }
     
     public static void msort(int[] data, int[] temp, int front, int back){
-
+	//this is the insertion sort part
+	if(back - front > 10){
+	    for(int outIndex = front + 1; outIndex < back; outIndex++){
+		for(int inIndex = front; inIndex < outIndex; inIndex++){
+		    if(data[outIndex] < data[inIndex]){
+			
+			
+		       
+		    }
+		}
+	    }
+	}
+	
 	if(front >= back){ //base case basically when front == back
 	    return;
 	}
 
       	int middle = (front / 2) + (back / 2); //finds mid
-	
+
 	msort(temp, data, front, middle); //first half
 	msort(temp, data, middle + 1, back); //other half
 	merge(data, temp, front, middle, middle + 1, back);
-
+	
+	
 	/*
 	System.out.println("data: " + toString(data));
 	System.out.println("temp: " + toString(temp));
@@ -102,6 +115,13 @@ public class Merge{
 	System.out.println(toString(test3));
 	mergesort(test3);
 	System.out.println(toString(test3));
+
+	System.out.println("-----------------*************----------------");
+
+	int[] test4 = {9,8,7,6,5,4,3,2,1,0};
+	System.out.println(toString(test4));
+	mergesort(test4);
+	System.out.println(toString(test4));
 	
 	
     }
