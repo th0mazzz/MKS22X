@@ -40,9 +40,7 @@ public class Quick{
 	int pivot = (int)(start + Math.random() * ((end - start)));	
 	int pivotEle = data[pivot];
 
-	
-	
-	swap(data, start, pivot); //puts pivot to front
+    	swap(data, start, pivot); //puts pivot to front
 	
 	int low = start;
 	int high = end;
@@ -128,13 +126,10 @@ public class Quick{
 
 	if(front != back){
 	    //System.out.println("front: " + front + ", " + back);
-	    quicksortHelp(data, front + 1, back);
-	    quicksortHelp(data, front, back - 1);
+	    quicksortHelp(data, front, range[0]);
+	    quicksortHelp(data, range[1], back - 1);
 
-	}
-	
-    
-	
+	}	
 	
 	/*
 	//fun while you lasted easy code
