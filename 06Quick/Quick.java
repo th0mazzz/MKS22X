@@ -122,11 +122,24 @@ public class Quick{
     public static void quicksortHelp(int[] data, int front, int back){
 
 	if(front < back){
-	    int[] range = partition(data, front, back);
-	    //System.out.println("front: " + front + ", " + back);
-	    quicksortHelp(data, front, range[0] - 1);
-	    quicksortHelp(data, range[1] + 1, back);
+	    //insertion sort
+	    if(back - front < 10){
+		for(int index = front; index <= back; index++){
+		    int currentEle = data[index];
 
+		    while(index - 1 >= 0 && currentEle < data[index - 1]){
+			data[index] = data[index - 1];
+			index--;
+		    }
+
+		    data[index] = currentEle;
+	    
+		}
+	    }else{
+		int[] range = partition(data, front, back);
+		quicksortHelp(data, front, range[0] - 1);
+		quicksortHelp(data, range[1] + 1, back);
+	    }
 	}	
 	
 	/*
