@@ -72,10 +72,13 @@ public class Driver{
 	long elapsedTime = System.currentTimeMillis() - startTime;
 	if(Arrays.equals(start,result)){
 	    System.out.println("PASS Case. "+name(type)+" array, size:"+size+" "+elapsedTime/1000.0+"sec ");
-	    System.out.println();
-	    System.out.println(Quick.toString(start));
+	    //System.out.println();
+	    //System.out.println(Quick.toString(start));
 	}else{
 	    System.out.println("FAIL !  ERROR! "+name(type)+" array, size:"+size+"  ERROR!");
+	    //System.out.println(Arrays.toString(start));
+	    //System.out.println("\n" + "Should be: ");
+	    //System.out.println(Arrays.toString(result));
 	}
     }
 }
