@@ -89,14 +89,14 @@ public class USACO{
 	}
 
 	
-	//DEBUGGING PURPOSES
+	/* //DEBUGGING PURPOSES
 	for(int rowIndex = 0; rowIndex < row; rowIndex++){
 	    for(int colIndex = 0; colIndex < col; colIndex++){
 		System.out.print(lake[rowIndex][colIndex] + "  ");
 	    }
 	    System.out.println();
 	}
-	//DEBUGGING PURPOSES
+	*///DEBUGGING PURPOSES
 	
 	return aggDepthSum * 72 * 72; //multiply by inches (6ft = 72in)
     }
