@@ -4,7 +4,7 @@ public class Driver{
 	
 	MyLinkedList test = new MyLinkedList();
 	
-	
+	System.out.println(test);
 	
 	
 	

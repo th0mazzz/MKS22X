@@ -62,4 +62,38 @@ public class MyLinkedList{
 	}
 	current.data = value;
     }
+
+    public int size(){
+	return length;
+    }
+
+    // getNode
+    //private Node getNode(int index){
+	
+    //}
+    // getNode
+
+    public void add (int index, int value){ //Beware empty lists and start/end nodes
+	if(index == 0){
+	    Node beginning = new Node(value, first);
+	    first = beginning;
+	}
+	else{
+	    if(index == this.size() - 1){
+		Node ending = new Node(value, null);
+		ending.setPrev(last);
+		last = ending;
+	    }
+	    else{
+		Node current = first;
+		for(int i = 0; i < index; i++){
+		    current = current.getNext();
+		}
+		    
+	    }
+	}
+    }
+		    
+    
+
 }
