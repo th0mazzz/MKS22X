@@ -5,20 +5,20 @@ public class MyLinkedList{
 
 	private Node next;
 	private Node prev;
-	private int data;
+	private Integer data;
 	
-	public Node(int data, Node next){
+	public Node(Integer data, Node next){
 	    this.next = next;
 	    this.data = data;
 	}
 
 	public Node getNext(){return this.next;}
 	public Node getPrev(){return this.prev;}
-	public int getValue(){return this.data;}
+	public Integer getValue(){return this.data;}
 
 	public void setNext(Node newNode){this.next = newNode;}
 	public void setPrev(Node newNode){this.next = newNode;}
-	public void setValue(int newData){this.data = newData;}
+	public void setValue(Integer newData){this.data = newData;}
 
 	public String toString(){
 	    return data + "";
@@ -29,25 +29,28 @@ public class MyLinkedList{
     
     private Node first;
     private Node last;
-    private int length;
+    private int size;
     
     public MyLinkedList(){
 	first = null;
 	last = null;
-	length = 0;
+	size = 0;
     }
 
     public String toString(){
-	String returnString = "";
-	Node current = first;
-	while(current.next != null){
-	    returnString = returnString + current.data;
-	    current = current.next;
+	String returnString = "[";
+	if(size() > 0){
+  	    Node current = first;
+	    while(current != null){
+		returnString = returnString + current.data + ", ";
+		current = current.next;
+	    }
+	    returnString = returnString.substring(0, returnString.length() - 2);
 	}
-	return returnString;
+	return returnString + "]";
     }
 
-    public int get(int n){
+    public Integer get(int n){
 	Node current = first;
 	for(int counter = 0; counter != n; counter++){
 	    current = current.next;
@@ -55,7 +58,7 @@ public class MyLinkedList{
 	return current.data;
     }
 
-    public void set(int index, int value){
+    public void set(int index, int value){ //Make sure of return type
 	Node current = first;
 	for(int counter = 0; counter != index; counter++){
 	    current = current.next;
@@ -64,33 +67,43 @@ public class MyLinkedList{
     }
 
     public int size(){
-	return length;
+	return size;
     }
 
     // getNode
-    //private Node getNode(int index){
-	
-    //}
+    private Node getNode(int index){ //this method's accuracy is unknown right now
+	Node current = first;
+	for(int i = 0; i < index; i++){
+	    current = current.getNext();
+	}
+	return current;
+    }
     // getNode
 
-    public void add (int index, int value){ //Beware empty lists and start/end nodes
+    public void add (int index, Integer value){ //Beware empty lists and start/end nodes
 	if(index == 0){
 	    Node beginning = new Node(value, first);
 	    first = beginning;
+	    size++;
 	}
-	else{
-	    if(index == this.size() - 1){
+	else{ //this case needs work
+	    if(index == size() - 1){
 		Node ending = new Node(value, null);
 		ending.setPrev(last);
 		last = ending;
+		size++;
 	    }
-	    else{
+
+	    /*
+	    else{ //this case needs work
 		Node current = first;
 		for(int i = 0; i < index; i++){
 		    current = current.getNext();
 		}
 		    
 	    }
+	    */
+	    
 	}
     }
 		    

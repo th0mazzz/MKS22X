@@ -5,8 +5,14 @@ public class Driver{
 	MyLinkedList test = new MyLinkedList();
 	
 	System.out.println(test);
+
+	test.add(0, 100);
 	
+	System.out.println(test);
+
+	test.add(1, 200);
 	
-	
+	System.out.println(test);
+	//System.out.println(test);
     }
 }
