@@ -74,7 +74,9 @@ public class MyLinkedList{
     }
 
     public void clear(){
-	//will fill in when remove is written
+	first = null;
+	last = null;
+	size = 0;
     }
     
     public int size(){
@@ -129,6 +131,8 @@ public class MyLinkedList{
 	}else{
 	    if(index <= 0){ //beware empty lists with no 1 element (for setPrev)
 		Node beginning = new Node(value, null, first);
+		first.setPrev(beginning);
+		beginning.setNext(first);
 		first = beginning;
 		size++;
 	    }
@@ -136,6 +140,7 @@ public class MyLinkedList{
 		if(index >= size()){
 		    Node ending = new Node(value, last, null);
 		    last.setNext(ending);
+		    ending.setPrev(last);
 		    last = ending;
 		    size++;
 		}
@@ -145,6 +150,8 @@ public class MyLinkedList{
 		    Node insert = new Node(value, before, after);
 		    before.setNext(insert);
 		    after.setPrev(insert);
+		    insert.setPrev(before);
+		    insert.setNext(after);
 		    size++;
 		}
 	    }
@@ -162,6 +169,7 @@ public class MyLinkedList{
 		    first = after;
 		    current.setNext(null);
 		    current.setPrev(null);
+		    size--;
 		    return true;
 		}else{
 		    if(index == size() - 1){
@@ -171,6 +179,7 @@ public class MyLinkedList{
 			last = before;
 			current.setNext(null);
 			current.setPrev(null);
+			size--;
 			return true;
 		    }
 		    else{
@@ -180,6 +189,7 @@ public class MyLinkedList{
 			after.setPrev(before);
 			current.setNext(null);
 			current.setPrev(null);
+			size--;
 			return true;
 		    }
 		}
@@ -195,6 +205,7 @@ public class MyLinkedList{
 	    after.setPrev(null);
 	    first = after;
 	    current.setNext(null);
+	    size--;
 	    return true;
 	}else{
 	    if(targetIndex == size() - 1){
@@ -202,6 +213,7 @@ public class MyLinkedList{
 		before.setNext(null);
 		last = before;
 		current.setPrev(null);
+		size--;
 		return true;
 	    }
 	    else{
@@ -211,6 +223,7 @@ public class MyLinkedList{
 		after.setPrev(before);
 		current.setNext(null);
 		current.setPrev(null);
+		size--;
 		return true;
 	    }
 	}
