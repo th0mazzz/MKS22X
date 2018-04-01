@@ -45,6 +45,14 @@ public class MyLinkedList{
     private Node first;
     private Node last;
     private int size;
+
+    private Node getNode(int index){
+	Node current = first;
+	for(int i = 0; i < index; i++){
+	    current = current.getNext();
+	}
+	return current;
+    }
     
     public MyLinkedList(){
 	first = null;
@@ -57,8 +65,8 @@ public class MyLinkedList{
 	if(size() > 0){
   	    Node current = first;
 	    while(current != null){
-		returnString = returnString + current.data + ", ";
-		current = current.next;
+		returnString = returnString + current.getValue() + ", ";
+		current = current.getNext();
 	    }
 	    returnString = returnString.substring(0, returnString.length() - 2);
 	}
@@ -74,39 +82,27 @@ public class MyLinkedList{
     }
     
     public Integer get(int n){
-	Node current = first;
-	for(int counter = 0; counter != n; counter++){
-	    current = current.next;
-	}
-	return current.data;
+	Node current = getNode(n);
+	return current.getValue();
     }
 
     public void set(int index, int value){ //Make sure of return type
-	Node current = first;
-	for(int counter = 0; counter != index; counter++){
-	    current = current.next;
-	}
-	current.data = value;
+	Node current = getNode(index);
+	current.setValue(value);
     }
 
-    
-
-    private Node getNode(int index){
-	Node current = first;
-	for(int i = 0; i < index; i++){
-	    current = current.getNext();
-	}
-	return current;
+    public int indexOf(Integer value){
+	return -1;
     }
 
-    public boolean add(Integer value){
+    public boolean add(Integer value){ //EXCEPTIONS AND PREVS
 	if(size == 0){
 	    Node beginning = new Node(value, null, first);
 	    first = beginning;
 	    last = beginning;
 	    size++;
 	    return true;
-	}else{ //needs prev
+	}else{
 	    Node ending = new Node(value, last, null);
 	    last.setNext(ending);
 	    last = ending;
@@ -140,9 +136,13 @@ public class MyLinkedList{
 		}
 	    }
 	}
-	
     }
 		    
-    
+    public boolean remove(Integer value){
+	return true;
+    }
 
+    public boolean remove(int index){
+	return true;
+    }
 }

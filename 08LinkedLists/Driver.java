@@ -14,5 +14,14 @@ public class Driver{
 	test.add(1343284);
 
 	System.out.println(test);
+	System.out.println(test.size());
+	System.out.println(test.get(2));
+	test.set(5, 600);
+
+	System.out.println(test);
+
+	test.add(2, 250);
+	System.out.println(test);
+	
     }
 }
