@@ -25,7 +25,7 @@ public class MyLinkedList{
 	
 	public Node setPrev(Node newNode){
 	    Node old = this.prev;
-	    this.next = newNode;
+	    this.prev = newNode;
 	    return old;
 	}
 	
@@ -132,6 +132,15 @@ public class MyLinkedList{
 		    Node ending = new Node(value, last, null);
 		    last.setNext(ending);
 		    last = ending;
+		    size++;
+		}
+		
+		else{
+		    Node before = getNode(index - 1);
+		    Node after = getNode(index);
+		    Node insert = new Node(value, before, after);
+		    before.setNext(insert);
+		    after.setPrev(insert);
 		    size++;
 		}
 	    }

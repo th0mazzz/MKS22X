@@ -21,6 +21,9 @@ public class Driver{
 	System.out.println(test);
 
 	test.add(2, 250);
+	System.out.println(test.size());
+	System.out.println(test);
+	test.add(3, 275);
 	System.out.println(test);
 	
     }
