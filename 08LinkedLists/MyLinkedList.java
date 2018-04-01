@@ -7,8 +7,9 @@ public class MyLinkedList{
 	private Node prev;
 	private Integer data;
 	
-	public Node(Integer data, Node next){
+	public Node(Integer data, Node prev, Node next){
 	    this.next = next;
+	    this.prev = prev;
 	    this.data = data;
 	}
 
@@ -82,28 +83,16 @@ public class MyLinkedList{
 
     public void add (int index, Integer value){ //Beware empty lists and start/end nodes
 	if(index == 0){
-	    Node beginning = new Node(value, first);
+	    Node beginning = new Node(value, null, first);
 	    first = beginning;
 	    size++;
 	}
 	else{ //this case needs work
-	    if(index == size() - 1){
-		Node ending = new Node(value, null);
-		ending.setPrev(last);
+	    if(index >= size()){
+		Node ending = new Node(value, last, null);
 		last = ending;
 		size++;
 	    }
-
-	    /*
-	    else{ //this case needs work
-		Node current = first;
-		for(int i = 0; i < index; i++){
-		    current = current.getNext();
-		}
-		    
-	    }
-	    */
-	    
 	}
     }
 		    
