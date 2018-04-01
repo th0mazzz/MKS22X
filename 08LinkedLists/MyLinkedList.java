@@ -17,9 +17,23 @@ public class MyLinkedList{
 	public Node getPrev(){return this.prev;}
 	public Integer getValue(){return this.data;}
 
-	public void setNext(Node newNode){this.next = newNode;}
-	public void setPrev(Node newNode){this.next = newNode;}
-	public void setValue(Integer newData){this.data = newData;}
+	public Node setNext(Node newNode){
+	    Node old = this.next;
+	    this.next = newNode;
+	    return old;
+	}
+	
+	public Node setPrev(Node newNode){
+	    Node old = this.prev;
+	    this.next = newNode;
+	    return old;
+	}
+	
+	public Integer setValue(Integer newData){
+	    Integer old = this.data;
+	    this.data = newData;
+	    return old;
+	}
 
 	public String toString(){
 	    return data + "";
@@ -51,6 +65,14 @@ public class MyLinkedList{
 	return returnString + "]";
     }
 
+    public void clear(){
+	//will fill in when remove is written
+    }
+    
+    public int size(){
+	return size;
+    }
+    
     public Integer get(int n){
 	Node current = first;
 	for(int counter = 0; counter != n; counter++){
@@ -67,9 +89,7 @@ public class MyLinkedList{
 	current.data = value;
     }
 
-    public int size(){
-	return size;
-    }
+    
 
     private Node getNode(int index){
 	Node current = first;
