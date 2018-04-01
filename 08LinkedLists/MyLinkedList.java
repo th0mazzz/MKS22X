@@ -188,7 +188,11 @@ public class MyLinkedList{
 	return false;
     }
 
-    //public boolean remove(int index){
-    //	return true;
-    //}
+    public boolean remove(int targetIndex){
+    	for(int index = 0; index < size(); index++){
+	    Node current = getNode(index);		
+	    
+	}
+	return -1;
+    }
 }

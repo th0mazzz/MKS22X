@@ -29,7 +29,8 @@ public class Driver{
 	System.out.println(test.indexOf(5));
 	System.out.println(test.indexOf(500));
 
-	test.remove(600);
+	Integer sixHunna = 600;
+	test.remove(sixHunna);
 	System.out.println(test);
 	
     }
