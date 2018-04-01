@@ -91,7 +91,13 @@ public class MyLinkedList{
 	current.setValue(value);
     }
 
-    public int indexOf(Integer value){
+    public int indexOf(Integer value){	
+	for(int index = 0; index < size(); index++){
+	    Node current = getNode(index);
+	    if(value.equals(current.getValue())){
+		return index;
+	    }
+	}
 	return -1;
     }
 
@@ -134,7 +140,6 @@ public class MyLinkedList{
 		    last = ending;
 		    size++;
 		}
-		
 		else{
 		    Node before = getNode(index - 1);
 		    Node after = getNode(index);

@@ -25,6 +25,9 @@ public class Driver{
 	System.out.println(test);
 	test.add(3, 275);
 	System.out.println(test);
+
+	System.out.println(test.indexOf(5));
+	System.out.println(test.indexOf(500));
 	
     }
 }
