@@ -107,14 +107,13 @@ public class MyLinkedList{
 	    first = beginning;
 	    last = beginning;
 	    size++;
-	    return true;
 	}else{
 	    Node ending = new Node(value, last, null);
 	    last.setNext(ending);
 	    last = ending;
 	    size++;
-	    return true;
 	}
+	return true;
     }
     
     public void add (int index, Integer value){ //Beware empty lists and start/end nodes
@@ -152,11 +151,44 @@ public class MyLinkedList{
 	}
     }
 		    
-    public boolean remove(Integer value){
-	return true;
+    public boolean remove(Integer value){ //EXCEPTIONS
+	for(int index = 0; index < size(); index++){
+	    Node current = getNode(index);
+	    if(value.equals(current.getValue())){
+		if(index == 0){
+		    Node before = current.getPrev();
+		    Node after = current.getNext();
+		    after.setPrev(before);
+		    first = after;
+		    current.setNext(null);
+		    current.setPrev(null);
+		    return true;
+		}else{
+		    if(index == size() - 1){
+			Node before = current.getPrev();
+			Node after = current.getNext();
+			before.setNext(after);
+			last = before;
+			current.setNext(null);
+			current.setPrev(null);
+			return true;
+		    }
+		    else{
+			Node before = current.getPrev();
+			Node after = current.getNext();
+			before.setNext(after);
+			after.setPrev(before);
+			current.setNext(null);
+			current.setPrev(null);
+			return true;
+		    }
+		}
+	    }
+	}
+	return false;
     }
 
-    public boolean remove(int index){
-	return true;
-    }
+    //public boolean remove(int index){
+    //	return true;
+    //}
 }
