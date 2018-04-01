@@ -10,9 +10,11 @@ public class Driver{
 	
 	System.out.println(test);
 
-	test.add(1, 200);
+	test.add(0, 200);
 	
 	System.out.println(test);
 	//System.out.println(test);
+
+	System.out.println(test.getNode(1));
     }
 }

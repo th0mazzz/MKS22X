@@ -72,7 +72,7 @@ public class MyLinkedList{
     }
 
     // getNode
-    private Node getNode(int index){ //this method's accuracy is unknown right now
+    private Node getNode(int index){
 	Node current = first;
 	for(int i = 0; i < index; i++){
 	    current = current.getNext();
@@ -87,13 +87,7 @@ public class MyLinkedList{
 	    first = beginning;
 	    size++;
 	}
-	else{ //this case needs work
-	    if(index >= size()){
-		Node ending = new Node(value, last, null);
-		last = ending;
-		size++;
-	    }
-	}
+	
     }
 		    
     
