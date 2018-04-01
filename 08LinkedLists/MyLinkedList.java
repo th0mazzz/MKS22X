@@ -71,7 +71,6 @@ public class MyLinkedList{
 	return size;
     }
 
-    // getNode
     private Node getNode(int index){
 	Node current = first;
 	for(int i = 0; i < index; i++){
@@ -79,13 +78,47 @@ public class MyLinkedList{
 	}
 	return current;
     }
-    // getNode
 
-    public void add (int index, Integer value){ //Beware empty lists and start/end nodes
-	if(index == 0){
+    public boolean add(Integer value){
+	if(size == 0){
 	    Node beginning = new Node(value, null, first);
 	    first = beginning;
+	    last = beginning;
 	    size++;
+	    return true;
+	}else{ //needs prev
+	    Node ending = new Node(value, last, null);
+	    last.setNext(ending);
+	    last = ending;
+	    size++;
+	    return true;
+	}
+    }
+    
+    public void add (int index, Integer value){ //Beware empty lists and start/end nodes
+
+	//NEED TO WORK ON PREVS
+	//ALSO THROW INDEXOUTOFBOUNDSEXCEPTIONS
+	
+	if(size() == 0){ //handles empty lists
+	    Node beginning = new Node(value, null, first);
+	    first = beginning;
+	    last = beginning;
+	    size++;
+	}else{
+	    if(index <= 0){ //beware empty lists with no 1 element (for setPrev)
+		Node beginning = new Node(value, null, first);
+		first = beginning;
+		size++;
+	    }
+	    else{
+		if(index >= size()){
+		    Node ending = new Node(value, last, null);
+		    last.setNext(ending);
+		    last = ending;
+		    size++;
+		}
+	    }
 	}
 	
     }
