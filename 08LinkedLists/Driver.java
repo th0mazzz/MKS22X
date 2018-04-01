@@ -32,6 +32,11 @@ public class Driver{
 	Integer sixHunna = 600;
 	test.remove(sixHunna);
 	System.out.println(test);
+
+	test.remove(2);
+	System.out.println(test);
+	test.remove(2);
+	System.out.println(test);
 	
     }
 }

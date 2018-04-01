@@ -189,10 +189,30 @@ public class MyLinkedList{
     }
 
     public boolean remove(int targetIndex){
-    	for(int index = 0; index < size(); index++){
-	    Node current = getNode(index);		
-	    
+	Node current = getNode(targetIndex);
+	if(targetIndex == 0){
+	    Node after = current.getNext();
+	    after.setPrev(null);
+	    first = after;
+	    current.setNext(null);
+	    return true;
+	}else{
+	    if(targetIndex == size() - 1){
+		Node before = current.getPrev();
+		before.setNext(null);
+		last = before;
+		current.setPrev(null);
+		return true;
+	    }
+	    else{
+		Node before = current.getPrev();
+		Node after = current.getNext();
+		before.setNext(after);
+		after.setPrev(before);
+		current.setNext(null);
+		current.setPrev(null);
+		return true;
+	    }
 	}
-	return -1;
     }
 }
