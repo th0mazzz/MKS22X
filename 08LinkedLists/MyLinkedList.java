@@ -47,6 +47,9 @@ public class MyLinkedList{
     private int size;
 
     private Node getNode(int index){
+	if(index < 0 || index >= size()){
+	    throw new IndexOutOfBoundsException();
+	}
 	Node current = first;
 	for(int i = 0; i < index; i++){
 	    current = current.getNext();
@@ -84,16 +87,22 @@ public class MyLinkedList{
     }
     
     public Integer get(int n){
+	if(n < 0 || n >= size()){
+	    throw new IndexOutOfBoundsException();
+	}
 	Node current = getNode(n);
 	return current.getValue();
     }
 
     public void set(int index, int value){ //Make sure of return type
+	if(index < 0 || index >= size()){
+	    throw new IndexOutOfBoundsException();
+	}
 	Node current = getNode(index);
 	current.setValue(value);
     }
 
-    public int indexOf(Integer value){	
+    public int indexOf(Integer value){
 	for(int index = 0; index < size(); index++){
 	    Node current = getNode(index);
 	    if(value.equals(current.getValue())){
@@ -103,7 +112,7 @@ public class MyLinkedList{
 	return -1;
     }
 
-    public boolean add(Integer value){ //EXCEPTIONS AND PREVS
+    public boolean add(Integer value){
 	if(size == 0){
 	    Node beginning = new Node(value, null, first);
 	    first = beginning;
@@ -120,8 +129,9 @@ public class MyLinkedList{
     
     public void add (int index, Integer value){ //Beware empty lists and start/end nodes
 
-	//NEED TO WORK ON PREVS
-	//ALSO THROW INDEXOUTOFBOUNDSEXCEPTIONS
+	if(index < 0 || index > size()){
+	    throw new IndexOutOfBoundsException();
+	}
 	
 	if(size() == 0){ //handles empty lists
 	    Node beginning = new Node(value, null, first);
@@ -129,7 +139,7 @@ public class MyLinkedList{
 	    last = beginning;
 	    size++;
 	}else{
-	    if(index <= 0){ //beware empty lists with no 1 element (for setPrev)
+	    if(index <= 0){
 		Node beginning = new Node(value, null, first);
 		first.setPrev(beginning);
 		beginning.setNext(first);
@@ -158,7 +168,7 @@ public class MyLinkedList{
 	}
     }
 		    
-    public boolean remove(Integer value){ //EXCEPTIONS
+    public boolean remove(Integer value){
 	for(int index = 0; index < size(); index++){
 	    Node current = getNode(index);
 	    if(value.equals(current.getValue())){
@@ -199,6 +209,11 @@ public class MyLinkedList{
     }
 
     public boolean remove(int targetIndex){
+
+	if(targetIndex < 0 || targetIndex >= size()){
+	    throw new IndexOutOfBoundsException();
+	}
+	
 	Node current = getNode(targetIndex);
 	if(targetIndex == 0){
 	    Node after = current.getNext();
