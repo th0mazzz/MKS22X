@@ -94,7 +94,7 @@ public class MyLinkedList{
 	return current.getValue();
     }
 
-    public void set(int index, int value){ //Make sure of return type
+    public void set(int index, Integer value){ //Make sure of return type
 	if(index < 0 || index >= size()){
 	    throw new IndexOutOfBoundsException();
 	}

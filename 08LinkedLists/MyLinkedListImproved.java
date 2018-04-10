@@ -1,13 +1,13 @@
-public class MyLinkedListImproved<T>{
+public class MyLinkedListImproved<Type>{
 
     //NODE CLASS
     private class Node{
 
 	private Node next;
 	private Node prev;
-	private Integer data;
+	private Type data;
 	
-	public Node(Integer data, Node prev, Node next){
+	public Node(Type data, Node prev, Node next){
 	    this.next = next;
 	    this.prev = prev;
 	    this.data = data;
@@ -15,7 +15,7 @@ public class MyLinkedListImproved<T>{
 
 	public Node getNext(){return this.next;}
 	public Node getPrev(){return this.prev;}
-	public Integer getValue(){return this.data;}
+	public Type getValue(){return this.data;}
 
 	public Node setNext(Node newNode){
 	    Node old = this.next;
@@ -29,8 +29,8 @@ public class MyLinkedListImproved<T>{
 	    return old;
 	}
 	
-	public Integer setValue(Integer newData){
-	    Integer old = this.data;
+	public Type setValue(Type newData){
+	    Type old = this.data;
 	    this.data = newData;
 	    return old;
 	}
@@ -41,8 +41,7 @@ public class MyLinkedListImproved<T>{
        
     }
     //NODE CLASS
-
-    T type;
+    
     private Node first;
     private Node last;
     private int size;
@@ -58,8 +57,7 @@ public class MyLinkedListImproved<T>{
 	return current;
     }
     
-    public MyLinkedListImproved(T type){
-	value = type;
+    public MyLinkedListImproved(){
 	first = null;
 	last = null;
 	size = 0;
@@ -88,7 +86,7 @@ public class MyLinkedListImproved<T>{
 	return size;
     }
     
-    public Integer get(int n){
+    public Type get(int n){
 	if(n < 0 || n >= size()){
 	    throw new IndexOutOfBoundsException();
 	}
@@ -96,7 +94,7 @@ public class MyLinkedListImproved<T>{
 	return current.getValue();
     }
 
-    public void set(int index, int value){ //Make sure of return type
+    public void set(int index, Type value){ //Make sure of return type
 	if(index < 0 || index >= size()){
 	    throw new IndexOutOfBoundsException();
 	}
@@ -104,7 +102,7 @@ public class MyLinkedListImproved<T>{
 	current.setValue(value);
     }
 
-    public int indexOf(Integer value){
+    public int indexOf(Type value){
 	for(int index = 0; index < size(); index++){
 	    Node current = getNode(index);
 	    if(value.equals(current.getValue())){
@@ -114,7 +112,7 @@ public class MyLinkedListImproved<T>{
 	return -1;
     }
 
-    public boolean add(Integer value){
+    public boolean add(Type value){
 	if(size == 0){
 	    Node beginning = new Node(value, null, first);
 	    first = beginning;
@@ -129,7 +127,7 @@ public class MyLinkedListImproved<T>{
 	return true;
     }
     
-    public void add (int index, Integer value){ //Beware empty lists and start/end nodes
+    public void add (int index, Type value){ //Beware empty lists and start/end nodes
 
 	if(index < 0 || index > size()){
 	    throw new IndexOutOfBoundsException();
@@ -170,7 +168,7 @@ public class MyLinkedListImproved<T>{
 	}
     }
 		    
-    public boolean remove(Integer value){
+    public boolean remove(Type value){
 	for(int index = 0; index < size(); index++){
 	    Node current = getNode(index);
 	    if(value.equals(current.getValue())){
