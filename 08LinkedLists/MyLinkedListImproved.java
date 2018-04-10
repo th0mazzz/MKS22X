@@ -1,4 +1,5 @@
-public class MyLinkedListImproved<Type>{
+import java.util.Iterator;
+public class MyLinkedListImproved<Type> implements Iterable<Type>{
 
     //NODE CLASS
     private class Node{
@@ -41,6 +42,39 @@ public class MyLinkedListImproved<Type>{
        
     }
     //NODE CLASS
+    
+    //ITERATOR STUFF
+
+    public Iterator<Type> iterator(){
+	return new ListIterator();
+    }
+
+    private class ListIterator implements Iterator<Type>{
+
+	Node current;
+	
+	public ListIterator(){
+	    current = first;
+	}
+	
+	public boolean hasNext(){
+	    if(current != null){
+		return true;
+	    }
+	    return false;
+	}
+
+	public Type next(){
+	    if(hasNext()){
+		Type returnValue = current.getValue();
+		current = current.getNext();
+		return returnValue;
+	    }
+	    return null;
+	}
+	
+    }
+    //ITERATOR STUFF
     
     private Node first;
     private Node last;

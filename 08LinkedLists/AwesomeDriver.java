@@ -9,6 +9,16 @@ public class AwesomeDriver{
 	a.add("by");
 	a.add("Beethoven?");
 	System.out.println(a);
-	
+
+	MyLinkedListImproved<Integer> b = new MyLinkedListImproved<>();
+	for(int index = 0; index < 20; index++){
+	    b.add((Integer)index);
+	}
+
+	System.out.println(b);
+
+	for(Integer i : b){
+	    System.out.print(i + " ");
+	}
     }
 }
