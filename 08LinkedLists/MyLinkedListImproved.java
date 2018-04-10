@@ -1,5 +1,5 @@
 import java.util.Iterator;
-public class MyLinkedListImproved<Type> implements Iterable<Type>{
+public class MyLinkedListImproved<Type extends Comparable<Type>> implements Iterable<Type>{
 
     //NODE CLASS
     private class Node{
@@ -276,5 +276,17 @@ public class MyLinkedListImproved<Type> implements Iterable<Type>{
 		return true;
 	    }
 	}
+    }
+
+    public int compareTo(T other){
+	
+    }
+    
+    public int max(){ //return the index of the largest value or -1 if empty
+	return -1;
+    }
+
+    public int min(){ //return the index of the smallest value or -1 if empty
+	return -1;
     }
 }
