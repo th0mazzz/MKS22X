@@ -161,7 +161,7 @@ public class MyLinkedListImproved<Type extends Comparable<Type>> implements Iter
 	return true;
     }
     
-    public void add (int index, Type value){ //Beware empty lists and start/end nodes
+    public void add(int index, Type value){ //Beware empty lists and start/end nodes
 
 	if(index < 0 || index > size()){
 	    throw new IndexOutOfBoundsException();
@@ -277,16 +277,40 @@ public class MyLinkedListImproved<Type extends Comparable<Type>> implements Iter
 	    }
 	}
     }
-
-    public int compareTo(T other){
-	
-    }
     
     public int max(){ //return the index of the largest value or -1 if empty
-	return -1;
+	int maxIndex = 0;
+	if(size() == 0){
+	    return -1;
+	}
+	if(size() == 1){
+	    return 0;
+	}
+	else{
+	    for(Type n : this){
+		if(n.compareTo(get(maxIndex)) > 0){
+		    maxIndex = indexOf(n);
+		}
+	    }
+	}
+	return maxIndex;
     }
 
     public int min(){ //return the index of the smallest value or -1 if empty
-	return -1;
+	int minIndex = 0;
+	if(size() == 0){
+	    return -1;
+	}
+	if(size() == 1){
+	    return 0;
+	}
+	else{
+	    for(Type n : this){
+		if(n.compareTo(get(minIndex)) < 0){
+		    minIndex = indexOf(n);
+		}
+	    }
+	}
+	return minIndex;
     }
 }

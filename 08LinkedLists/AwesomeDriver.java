@@ -20,5 +20,18 @@ public class AwesomeDriver{
 	for(Integer i : b){
 	    System.out.print(i + " ");
 	}
+	
+	System.out.println("==================================");
+	System.out.println();
+
+	MyLinkedListImproved<String> c = new MyLinkedListImproved<>();
+	c.add("orange");
+	c.add("apple");
+	c.add("banana");
+	c.add("aaple");
+	c.add(2, "pineapple");
+	System.out.println(c);
+	System.out.println("maxIndex: " + c.max());
+	System.out.println("minIndex: " + c.min());
     }
 }
