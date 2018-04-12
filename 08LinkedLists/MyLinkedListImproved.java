@@ -315,9 +315,16 @@ public class MyLinkedListImproved<Type extends Comparable<Type>> implements Iter
     }
 
     public void extend(MyLinkedListImproved<Type> other){ //SHOULD TEST
-        last.setNext(other.getNode(0));
 	if(other.size() != 0){
-	    other.getNode(0).setPrev(last);
+	    if(size() != 0){
+		last.setNext(other.getNode(0));
+		other.getNode(0).setPrev(last);
+		size = size + other.size();
+	    }
+	    else{
+		first = other.getNode(0);
+		size = size + other.size();
+	    }
 	}
 	other.clear();
     }
