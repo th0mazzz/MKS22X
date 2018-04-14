@@ -12,25 +12,46 @@ public class Sort{
 	for(int i = 0; i < 10; i++){
 	    buckets[i] = new MyLinkedListImproved<Integer>();
 	}
-
-	
-
 	
 	for(Integer i : data){
 	    buckets[0].add(i);
-	}
+	}	
 
-	System.out.println(buckets[0]);
-	
-
-	for(int runthru = 0; runthru < maxDigits; runthru++){
-
+	for(int runthru = 0; runthru <= maxDigits; runthru++){
+	    
 	    @SuppressWarnings("unchecked")
 		MyLinkedListImproved<Integer>[] workspace = new MyLinkedListImproved[10];
 
-	    
+	    for(int i = 0; i < 10; i++){
+		workspace[i] = new MyLinkedListImproved<Integer>();
+	    }
+	    for(int index = 0; index < 10; index++){
+		for(Integer i : buckets[index]){
+		
+		    int value = digInPos(i, runthru);
+		
+		    workspace[value].add(i);
+		}
+	    }
+
+	    buckets = workspace;
 	    
 	}
+
+	data.clear();
+
+	for(int index = 0; index < 10; index++){
+	    System.out.print(buckets[index]);
+	}
+	
+	for(int index = 0; index < 10; index++){
+	    System.out.println("Size: " + buckets[index].size());
+	    System.out.println(buckets[index]);
+	    
+	    data.extend(buckets[index]);
+	}
+
+	//System.out.println(data);
     }
 
     public static Integer findMaxDigits(MyLinkedListImproved<Integer> data){
@@ -59,6 +80,8 @@ public class Sort{
     
     public static void main(String[] args){
 	MyLinkedListImproved<Integer> a = new MyLinkedListImproved<>();
+	
+	/*
 	a.add(new Integer (23));
 	a.add(new Integer (9));
 	a.add(new Integer (44));
@@ -66,7 +89,16 @@ public class Sort{
 	a.add(new Integer (132));
 	a.add(new Integer (98));
 	//a.add(new Integer (987654321));
+
+	*/
+
+	for(int index = 0; index < 10; index++){
+	    
+	    a.add(new Integer ((int)(Math.random()*10) * (int)(Math.random() * 10)));
+	}
+	System.out.println(a);
 	radixsort(a);
+	System.out.println(a);
 
     }
 }    
