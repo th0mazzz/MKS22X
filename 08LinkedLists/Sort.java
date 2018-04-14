@@ -3,11 +3,34 @@ public class Sort{
 	
 	Integer max = findMaxDigits(data);
 	int maxDigits = log10(max);
-	System.out.println(maxDigits);
+	System.out.println("MaxDigits: " + maxDigits);
 
-	MyLinkedListImproved<Integer>[] buckets = new MyLinkedListImproved[10];
+
+	@SuppressWarnings("unchecked")
+	    MyLinkedListImproved<Integer>[] buckets = new MyLinkedListImproved[10];
+
+	for(int i = 0; i < 10; i++){
+	    buckets[i] = new MyLinkedListImproved<Integer>();
+	}
+
 	
+
 	
+	for(Integer i : data){
+	    buckets[0].add(i);
+	}
+
+	System.out.println(buckets[0]);
+	
+
+	for(int runthru = 0; runthru < maxDigits; runthru++){
+
+	    @SuppressWarnings("unchecked")
+		MyLinkedListImproved<Integer>[] workspace = new MyLinkedListImproved[10];
+
+	    
+	    
+	}
     }
 
     public static Integer findMaxDigits(MyLinkedListImproved<Integer> data){
@@ -25,13 +48,24 @@ public class Sort{
 	return tens + 1;
     }
 
+    public static int digInPos(Integer num, int position){
+	int current = 1;
+	while(current < position){
+	    num = num / 10;
+	    current++;
+	}
+	return num % 10;
+    }
+    
     public static void main(String[] args){
 	MyLinkedListImproved<Integer> a = new MyLinkedListImproved<>();
 	a.add(new Integer (23));
+	a.add(new Integer (9));
 	a.add(new Integer (44));
 	a.add(new Integer (12));
+	a.add(new Integer (132));
 	a.add(new Integer (98));
-	a.add(new Integer (987654321));
+	//a.add(new Integer (987654321));
 	radixsort(a);
 
     }
