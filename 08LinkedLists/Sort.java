@@ -1,3 +1,4 @@
+import java.util.Random;
 public class Sort{
     public static void radixsort(MyLinkedListImproved<Integer> data){
 	
@@ -38,28 +39,28 @@ public class Sort{
 	    
 	}
 
+	/*
 	System.out.println();
 	for(int i = 0; i < 10; i++){
 	    System.out.print(buckets[i]);
 	}
 	System.out.println();
 	System.out.println();
+	*/
 
 	data.clear();
 
+	/*
 	System.out.println("data: " + data + " , " + data.size());
 	
 	for(int i = 0; i < 10; i++){
 	    System.out.println(buckets[i] + " , size: " + buckets[i].size() );
 	}
+	*/
 	
-	for(int i = 0; i < 10; i++){ //issue here
-	    System.out.println("extend " + i);
+	for(int i = 0; i < 10; i++){
 	    data.extend(buckets[i]);
 	}
-	
-	System.out.println();
-	System.out.println(data);
     }
 
     public static Integer findMaxDigits(MyLinkedListImproved<Integer> data){
@@ -100,13 +101,16 @@ public class Sort{
 
 	*/
 
-	for(int index = 0; index < 10; index++){
+	Random generator = new Random();
+	
+	for(int index = 0; index < 1000000; index++){
+
+	    a.add(new Integer (generator.nextInt(10000)));
 	    
-	    a.add(new Integer ((int)(Math.random()*10) * (int)(Math.random() * 10)));
 	}
-	System.out.println(a);
+	//System.out.println(a);
 	radixsort(a);
-	System.out.println(a);
+	//System.out.println(a);
 
     }
 }    
