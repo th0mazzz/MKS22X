@@ -38,20 +38,25 @@ public class Sort{
 	    
 	}
 
+	System.out.println();
+	for(int i = 0; i < 10; i++){
+	    System.out.print(buckets[i]);
+	}
+	System.out.println();
+	System.out.println();
+
 	data.clear();
 
-	for(int index = 0; index < 10; index++){
-	    System.out.print(buckets[index]);
+	for(int i = 0; i < 10; i++){
+	    System.out.println(buckets[i]);
 	}
 	
-	for(int index = 0; index < 10; index++){
-	    System.out.println("Size: " + buckets[index].size());
-	    System.out.println(buckets[index]);
-	    
-	    data.extend(buckets[index]);
+	for(int i = 0; i < 10; i++){ //issue here
+	    data.extend(buckets[i]);
 	}
-
-	//System.out.println(data);
+	
+	System.out.println();
+	System.out.println(data);
     }
 
     public static Integer findMaxDigits(MyLinkedListImproved<Integer> data){
