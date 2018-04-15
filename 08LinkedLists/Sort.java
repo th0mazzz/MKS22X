@@ -4,21 +4,27 @@ public class Sort{
 	
 	Integer max = findMaxDigits(data);
 	int maxDigits = log10(max);
-	System.out.println("MaxDigits: " + maxDigits);
+	//System.out.println("MaxDigits: " + maxDigits);
 
 
 	@SuppressWarnings("unchecked")
 	    MyLinkedListImproved<Integer>[] buckets = new MyLinkedListImproved[10];
-
+	@SuppressWarnings("unchecked")
+	    MyLinkedListImproved<Integer>[] bucketsNeg = new MyLinkedListImproved[10];
+	
 	for(int i = 0; i < 10; i++){
 	    buckets[i] = new MyLinkedListImproved<Integer>();
+	    bucketsNeg[i] = new MyLinkedListImproved<Integer>();
 	}
 	
 	for(Integer i : data){
-	    buckets[0].add(i);
+	    if(i >= 0)
+		buckets[0].add(i);
+	    else
+		bucketsNeg[0].add(i);
 	}	
 
-	for(int runthru = 0; runthru <= maxDigits; runthru++){
+	for(int runthru = 0; runthru <= maxDigits; runthru++){ //Positive and 0
 	    
 	    @SuppressWarnings("unchecked")
 		MyLinkedListImproved<Integer>[] workspace = new MyLinkedListImproved[10];
@@ -34,12 +40,38 @@ public class Sort{
 		    workspace[value].add(i);
 		}
 	    }
-
+	    
 	    buckets = workspace;
 	    
 	}
 
+	for(int runthru = 0; runthru <= maxDigits; runthru++){ //Negative
+	    
+	    @SuppressWarnings("unchecked")
+		MyLinkedListImproved<Integer>[] workspace = new MyLinkedListImproved[10];
+
+	    for(int i = 0; i < 10; i++){
+		workspace[i] = new MyLinkedListImproved<Integer>();
+	    }
+	    for(int index = 0; index < 10; index++){
+		for(Integer i : bucketsNeg[index]){
+		
+		    int value = digInPos(i * -1, runthru);
+		
+		    workspace[9 - value].add(i);
+		}
+	    }
+	    
+	    bucketsNeg = workspace;
+	    
+	}
+
 	/*
+	for(int i = 0; i < 10; i++){
+	    System.out.print(bucketsNeg[i]);
+	}
+	
+	
 	System.out.println();
 	for(int i = 0; i < 10; i++){
 	    System.out.print(buckets[i]);
@@ -58,6 +90,9 @@ public class Sort{
 	}
 	*/
 	
+	for(int i = 0; i < 10; i++){
+	    data.extend(bucketsNeg[i]);
+	}
 	for(int i = 0; i < 10; i++){
 	    data.extend(buckets[i]);
 	}
@@ -105,12 +140,14 @@ public class Sort{
 	
 	for(int index = 0; index < 1000000; index++){
 
+	    a.add(new Integer (generator.nextInt(10000) * -1));
 	    a.add(new Integer (generator.nextInt(10000)));
 	    
 	}
-	//System.out.println(a);
+	
+	//System.out.println(a + "\n");
 	radixsort(a);
-	//System.out.println(a);
+	//System.out.println("\n\n" + a);
 
     }
 }    
