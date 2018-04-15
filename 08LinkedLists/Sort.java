@@ -54,6 +54,7 @@ public class Sort{
 	}
 	
 	for(int i = 0; i < 10; i++){ //issue here
+	    System.out.println("extend " + i);
 	    data.extend(buckets[i]);
 	}
 	

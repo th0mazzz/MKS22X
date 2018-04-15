@@ -319,6 +319,7 @@ public class MyLinkedListImproved<Type extends Comparable<Type>> implements Iter
 	    if(size() != 0){
 		last.setNext(other.first);
 		other.getNode(0).setPrev(last);
+		last = other.last;
 		size = size + other.size();
 	    }
 	    else{
