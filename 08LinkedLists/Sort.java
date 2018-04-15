@@ -47,8 +47,10 @@ public class Sort{
 
 	data.clear();
 
+	System.out.println("data: " + data + " , " + data.size());
+	
 	for(int i = 0; i < 10; i++){
-	    System.out.println(buckets[i]);
+	    System.out.println(buckets[i] + " , size: " + buckets[i].size() );
 	}
 	
 	for(int i = 0; i < 10; i++){ //issue here

@@ -59,5 +59,15 @@ public class AwesomeDriver{
 
 	g.extend(h);
 	System.out.println(g);
+
+	MyLinkedListImproved<String> i = new MyLinkedListImproved<>();
+	MyLinkedListImproved<String> j = new MyLinkedListImproved<>();
+
+	j.add("bro");
+	j.add("what");
+	j.add("you doing");
+
+	i.extend(j);
+	System.out.println(i);
     }
 }
