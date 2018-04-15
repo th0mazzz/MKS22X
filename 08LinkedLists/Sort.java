@@ -1,7 +1,7 @@
 import java.util.Random;
 public class Sort{
     public static void radixsort(MyLinkedListImproved<Integer> data){
-	
+
 	Integer max = findMaxDigits(data);
 	int maxDigits = log10(max);
 	//System.out.println("MaxDigits: " + maxDigits);
@@ -138,7 +138,7 @@ public class Sort{
 
 	Random generator = new Random();
 	
-	for(int index = 0; index < 1000000; index++){
+	for(int index = 0; index < 100000; index++){
 
 	    a.add(new Integer (generator.nextInt(10000) * -1));
 	    a.add(new Integer (generator.nextInt(10000)));
