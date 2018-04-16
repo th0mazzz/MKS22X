@@ -1,6 +1,39 @@
 import java.util.Random;
 public class Sort{
-    public static void radixsort(MyLinkedListImproved<Integer> data){
+
+    public static void radixsortBetter(MyLinkedListImproved<Integer> data){
+	
+	Integer max = findMaxDigits(data);
+	int maxDigits = log10(max);
+
+	@SuppressWarnings("unchecked")
+	    MyLinkedListImproved<Integer>[] buckets = new MyLinkedListImproved[10];
+	
+	for(int i = 0; i < 10; i++){
+	    buckets[i] = new MyLinkedListImproved<Integer>();
+	}
+
+	MyLinkedListImproved<Integer> dataPos = new MyLinkedListImproved<>();
+	MyLinkedListImproved<Integer> dataNeg = new MyLinkedListImproved<>();
+	MyLinkedListImproved<Integer> workspace = new MyLinkedListImproved<>();
+
+	for(Integer i : data){
+	    if(i >= 0)
+		dataPos.add(i);
+	    else
+		dataNeg.add(i);
+	}
+
+	System.out.println(dataPos);
+	System.out.println(dataNeg);
+	//-------------------------------------------------------WORKINPROGRESS
+
+	
+	
+	//-------------------------------------------------------WORKINPROGRESS
+    }
+    
+    public static void radixsort(MyLinkedListImproved<Integer> data){ //THIS WAS THE OLD ONE
 
 	Integer max = findMaxDigits(data);
 	int maxDigits = log10(max);
@@ -45,6 +78,7 @@ public class Sort{
 	    
 	}
 
+	
 	for(int runthru = 0; runthru <= maxDigits; runthru++){ //Negative
 	    
 	    @SuppressWarnings("unchecked")
@@ -138,16 +172,16 @@ public class Sort{
 
 	Random generator = new Random();
 	
-	for(int index = 0; index < 100000; index++){
+	for(int index = 0; index < 10; index++){
 
-	    a.add(new Integer (generator.nextInt(10000) * -1));
-	    a.add(new Integer (generator.nextInt(10000)));
+	    a.add(new Integer (generator.nextInt(100) * -1));
+	    a.add(new Integer (generator.nextInt(100)));
 	    
 	}
 	
-	//System.out.println(a + "\n");
-	radixsort(a);
-	//System.out.println("\n\n" + a);
+	System.out.println(a + "\n");
+	radixsortBetter(a);
+	System.out.println("\n\n" + a);
 
     }
 }    
