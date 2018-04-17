@@ -1,7 +1,7 @@
 import java.util.Random;
 public class Sort{
 
-    public static void radixsortBetter(MyLinkedListImproved<Integer> data){
+    public static void radixsort(MyLinkedListImproved<Integer> data){
 	
 	Integer max = findMaxDigits(data);
 	int maxDigits = log10(max);
@@ -24,16 +24,46 @@ public class Sort{
 		dataNeg.add(i);
 	}
 
-	System.out.println(dataPos);
-	System.out.println(dataNeg);
-	//-------------------------------------------------------WORKINPROGRESS
+	//System.out.println(dataPos);
+	//System.out.println(dataNeg);
+	
+	for(int runthru = 0; runthru <= maxDigits; runthru++){ //Positives and 0
+	    for(Integer i : dataPos){
+		int value = digInPos(i, runthru);
+		buckets[value].add(i);
+	    }
 
+	    dataPos.clear();
+	    
+	    for(int index = 0; index < 10; index++){
+		dataPos.extend(buckets[index]);
+	    }
+	}
+
+	//System.out.println("\n" + dataPos);
 	
-	
-	//-------------------------------------------------------WORKINPROGRESS
+	for(int runthru = 0; runthru <= maxDigits; runthru++){ //Negatives
+	    for(Integer i : dataNeg){
+		int value = digInPos(i * -1, runthru);
+		buckets[9 - value].add(i);
+	    }
+
+	    dataNeg.clear();
+	    
+	    for(int index = 0; index < 10; index++){
+		dataNeg.extend(buckets[index]);
+	    }
+	}
+
+	//System.out.println(dataNeg);
+
+	data.clear();
+	data.extend(dataNeg);
+	data.extend(dataPos);
+
     }
     
-    public static void radixsort(MyLinkedListImproved<Integer> data){ //THIS WAS THE OLD ONE
+    public static void radixsortSlowerVersion(MyLinkedListImproved<Integer> data){ //THIS WAS THE OLD ONE
 
 	Integer max = findMaxDigits(data);
 	int maxDigits = log10(max);
@@ -172,16 +202,16 @@ public class Sort{
 
 	Random generator = new Random();
 	
-	for(int index = 0; index < 10; index++){
+	for(int index = 0; index < 1000000; index++){
 
 	    a.add(new Integer (generator.nextInt(100) * -1));
 	    a.add(new Integer (generator.nextInt(100)));
 	    
 	}
 	
-	System.out.println(a + "\n");
-	radixsortBetter(a);
-	System.out.println("\n\n" + a);
+	//System.out.println("Input: " + a + "\n");
+	radixsort(a);
+	//System.out.println("\n\nOutput: " + a);
 
     }
 }    
