@@ -137,7 +137,6 @@ public class CrystalDriver{
 	correctData = new int[0];
 
 	start = System.currentTimeMillis();
-	System.out.println(data.size());
 	Sort.radixsort(data);
 	end = System.currentTimeMillis();
 
