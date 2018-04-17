@@ -2,6 +2,10 @@ import java.util.Random;
 public class Sort{
 
     public static void radixsort(MyLinkedListImproved<Integer> data){
+
+	if(data.size() == 0){
+	    return;
+	}
 	
 	Integer max = findMaxDigits(data);
 	int maxDigits = log10(max);

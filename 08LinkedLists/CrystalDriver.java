@@ -85,7 +85,7 @@ public class CrystalDriver{
 	}
 	System.out.println("\n");
 
-	/*
+	
 	//-----------SORTING POSITIVES AND NEGATIVES-----------
 	System.out.println("TESTING ON POSITIVE AND NEGATIVE INTEGERS:");
 	data.clear();
@@ -137,6 +137,7 @@ public class CrystalDriver{
 	correctData = new int[0];
 
 	start = System.currentTimeMillis();
+	System.out.println(data.size());
 	Sort.radixsort(data);
 	end = System.currentTimeMillis();
 
@@ -239,7 +240,7 @@ public class CrystalDriver{
 	    System.out.println(data);
 	}
 
-	*/
+	
     }
 
 	
