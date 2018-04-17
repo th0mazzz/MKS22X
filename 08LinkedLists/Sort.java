@@ -212,16 +212,16 @@ public class Sort{
 
 	Random generator = new Random();
 	
-	for(int index = 0; index < 1000; index++){
+	for(int index = 0; index < 500000; index++){
 
 	    a.add(new Integer (generator.nextInt(100) * -1));
-	    a.add(new Integer (generator.nextInt(100) * -1));
+	    a.add(new Integer (generator.nextInt(100) * 1));
 	    
 	}
 	
-	System.out.println("Input: " + a + "\n");
+	//System.out.println("Input: " + a + "\n");
 	radixsort(a);
-	System.out.println("\n\nOutput: " + a);
+	//System.out.println("\n\nOutput: " + a);
 
     }
 }    
