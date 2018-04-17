@@ -42,7 +42,7 @@ public class CrystalDriver{
 	}
 	System.out.println("\n");
 
-
+	
 	//-----------SORTING NEGATIVES-----------
 	System.out.println("TESTING ON NEGATIVE INTEGERS ONLY:");
 	data.clear();
@@ -85,7 +85,7 @@ public class CrystalDriver{
 	}
 	System.out.println("\n");
 
-
+	/*
 	//-----------SORTING POSITIVES AND NEGATIVES-----------
 	System.out.println("TESTING ON POSITIVE AND NEGATIVE INTEGERS:");
 	data.clear();
@@ -238,5 +238,10 @@ public class CrystalDriver{
 	else{
 	    System.out.println(data);
 	}
+
+	*/
     }
+
+	
+
 }

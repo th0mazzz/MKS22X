@@ -164,12 +164,18 @@ public class Sort{
 
     public static Integer findMaxDigits(MyLinkedListImproved<Integer> data){
 	int maxIndex = data.max();
+	int minIndex = data.min();
 	Integer maxValue = data.get(maxIndex);
-	return maxValue;
+	Integer minValue = data.get(minIndex);
+	if(Math.abs(maxValue) >= Math.abs(minValue))
+	    return maxValue;
+	else
+	    return minValue;
     }
 
     public static int log10(Integer num){
 	int tens = 0;
+	num = Math.abs(num);
 	while(num >= 10){
 	    tens++;
 	    num = num / 10;
@@ -202,16 +208,16 @@ public class Sort{
 
 	Random generator = new Random();
 	
-	for(int index = 0; index < 1000000; index++){
+	for(int index = 0; index < 1000; index++){
 
 	    a.add(new Integer (generator.nextInt(100) * -1));
-	    a.add(new Integer (generator.nextInt(100)));
+	    a.add(new Integer (generator.nextInt(100) * -1));
 	    
 	}
 	
-	//System.out.println("Input: " + a + "\n");
+	System.out.println("Input: " + a + "\n");
 	radixsort(a);
-	//System.out.println("\n\nOutput: " + a);
+	System.out.println("\n\nOutput: " + a);
 
     }
 }    
