@@ -1,7 +1,16 @@
-public class Stack<Type> extends LinkedList<Type>{
+import java.util.LinkedList;
+public class Stack<Type>{
 
-    public <Type> eval(String express){
-
-    }
+    LinkedList<Type> list;
     
+    public Stack(){
+	list = new LinkedList<Type>();
+    }
+
+    
+
+
+
+
+
 }
