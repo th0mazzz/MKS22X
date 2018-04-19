@@ -1,15 +1,17 @@
-public class MyDeque{
+public class MyDeque<Type>{
 
     private int size;
-    private String[] array;
-    
+    private Type[] array;
+
+    @SuppressWarning("unchecked")
     public MyDeque(){
-	array = new String[10];
+	array = (Type[])new Object[10];
 	size = 0;
     }
-
+    
+    @SuppressWarning("unchecked") 
     public MyDeque(int initialCapacity){
-	array = new String[initialCapacity];
+	array = (Type[])new Object[initialCapacity];
 	size = 0;
     }
 
