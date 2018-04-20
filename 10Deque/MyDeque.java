@@ -43,9 +43,30 @@ public class MyDeque<Type>{
 	return size;
     }
 
-    @SuppressWarnings("unchecked");
+    @SuppressWarnings("unchecked")
     public void resize(){
-	Type[] extended = (Type[]) new Object[size() * 2];
+	System.out.println("start: " + start +  " , end: " + end);
+	
+	Type[] extended = (Type[]) new Object[array.length * 2];
+	if(start <= end){
+	    int addIndex = extended.length - 1;
+	    for(int index = end; index > 0; index--){
+		extended[addIndex] = array[index];
+		addIndex--;
+	    }
+	    start = addIndex;
+	}else{ //start > end
+	    for(int index = 0; index <= end; index++){
+		extended[index] = array[index];
+	    }
+	    int addBack = extended.length - 1;
+	    for(int index = end; index >= start; index--){
+		//System.out.println("..." + array[index]);
+		extended[addBack] = array[index];
+		addBack--;
+	    }
+	}
+	array = extended;
     }
     
     public void addFirst(Type element){

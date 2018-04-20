@@ -13,6 +13,9 @@ public class Driver{
 	a.addFirst("a");
 	a.addFirst("a");
 	System.out.println(a);
+	a.resize();
+	System.out.println(a.size());
+	System.out.println(a);
 
     }
     
