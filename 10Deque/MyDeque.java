@@ -19,9 +19,12 @@ public class MyDeque<Type>{
 	end = -1;
 	size = 0;
     }
-    //fix
+
     public String toString(){ //need to update to conform to wrap arounds
 	String returnString = "[";
+	if(size() == 0){
+	    return "[]";
+	}
 	if(size() == 1){
 	    returnString = returnString + array[start];
 	}else{
@@ -45,11 +48,13 @@ public class MyDeque<Type>{
 	    array[0] = element;
 	    size++;
 	}else{
+	    // if(start >= end??
+	    array[start + 1] = element;
 	    //need to implement wrap arounds and add befores
 	}
     }
 
-    public void addLast(Type element){
+    public void addLast(Type element){ //wrap arounds!
 	if(size() == 0){
 	    start = 0;
 	    end = 0;
@@ -60,6 +65,14 @@ public class MyDeque<Type>{
 	    end++;
 	    size++;
 	}
+    }
+
+    public Type removeFirst(){
+	
+    }
+
+    public Type removeLast(){
+
     }
 
 }
