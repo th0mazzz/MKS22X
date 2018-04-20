@@ -6,7 +6,12 @@ public class Driver{
 	System.out.println(a);
 	a.addFirst("Apple");
 	System.out.println(a);
-	a.addLast("I come after");
+	a.addFirst("I come first");
+	System.out.println(a);
+	a.addFirst("a");
+	a.addFirst("a");
+	a.addFirst("a");
+	a.addFirst("a");
 	System.out.println(a);
 
     }

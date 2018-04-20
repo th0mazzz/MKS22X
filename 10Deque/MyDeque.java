@@ -22,57 +22,53 @@ public class MyDeque<Type>{
 
     public String toString(){ //need to update to conform to wrap arounds
 	String returnString = "[";
+	
 	if(size() == 0){
 	    return "[]";
 	}
 	if(size() == 1){
 	    returnString = returnString + array[start];
 	}else{
-	    for(int index = 0; index < size(); index++){
+	    for(int index = 0; index < array.length; index++){
 		returnString = returnString + array[index] + ", ";
 	    }
 	    returnString = returnString.substring(0, returnString.length() - 2);
 	}
 	
 	return returnString + "]";
+	
     }
     
     public int size(){
 	return size;
     }
 
+    @SuppressWarnings("unchecked");
+    public void resize(){
+	Type[] extended = (Type[]) new Object[size() * 2];
+    }
+    
     public void addFirst(Type element){
 	if(size() == 0){
 	    start = 0;
 	    end = 0;
-	    array[0] = element;
+	    array[start] = element;
 	    size++;
 	}else{
-	    // if(start >= end??
-	    array[start + 1] = element;
-	    //need to implement wrap arounds and add befores
+	    if(size() == array.length){
+		//resize
+	    }
+	    if(start - 1 < 0){
+		start = array.length - 1;
+		array[start] = element;
+		size++;
+	    }else{
+		start--;
+		array[start] = element;
+		size++;
+	    }
 	}
     }
 
-    public void addLast(Type element){ //wrap arounds!
-	if(size() == 0){
-	    start = 0;
-	    end = 0;
-	    array[0] = element;
-	    size++;
-	}else{
-	    array[end + 1] = element;
-	    end++;
-	    size++;
-	}
-    }
-
-    public Type removeFirst(){
-	
-    }
-
-    public Type removeLast(){
-
-    }
 
 }
