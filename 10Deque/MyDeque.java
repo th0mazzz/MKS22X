@@ -22,6 +22,7 @@ public class MyDeque<Type>{
 
     public String toString(){ //need to update to conform to wrap arounds
 	String returnString = "[";
+	System.out.println("start: " + start +  " , end: " + end);
 	
 	if(size() == 0){
 	    return "[]";
@@ -45,31 +46,32 @@ public class MyDeque<Type>{
 
     @SuppressWarnings("unchecked")
     public void resize(){
-	System.out.println("start: " + start +  " , end: " + end);
 	
 	Type[] extended = (Type[]) new Object[array.length * 2];
 	if(start <= end){
 	    int addIndex = extended.length - 1;
-	    for(int index = end; index > 0; index--){
+	    for(int index = end; index >= 0; index--){
 		extended[addIndex] = array[index];
 		addIndex--;
 	    }
-	    start = addIndex;
 	}else{ //start > end
-	    for(int index = 0; index <= end; index++){
+	    int index = 0;
+	    for(; index <= end; index++){
 		extended[index] = array[index];
 	    }
+	    end = index - 1;
 	    int addBack = extended.length - 1;
-	    for(int index = end; index >= start; index--){
-		//System.out.println("..." + array[index]);
-		extended[addBack] = array[index];
+	    for(int indexLoop = array.length - 1; indexLoop >= start; indexLoop--){
+		//System.out.println("..." + array[indexLoop]);
+		extended[addBack] = array[indexLoop];
 		addBack--;
 	    }
+	    start = addBack + 1;
 	}
 	array = extended;
     }
     
-    public void addFirst(Type element){
+    public void addFirst(Type element){ //exception
 	if(size() == 0){
 	    start = 0;
 	    end = 0;
@@ -77,7 +79,7 @@ public class MyDeque<Type>{
 	    size++;
 	}else{
 	    if(size() == array.length){
-		//resize
+		resize();
 	    }
 	    if(start - 1 < 0){
 		start = array.length - 1;
@@ -86,6 +88,28 @@ public class MyDeque<Type>{
 	    }else{
 		start--;
 		array[start] = element;
+		size++;
+	    }
+	}
+    }
+
+    public void addLast(Type element){
+	if(size() == 0){
+	    start = 0;
+	    end = 0;
+	    array[end] = element;
+	    size++;
+	}else{
+	    if(size() == array.length){
+		resize();
+	    }
+	    if(end >= array.length){
+		end = 0;
+		array[end] = element;
+		size++;
+	    }else{
+		end++;
+		array[end] = element;
 		size++;
 	    }
 	}
