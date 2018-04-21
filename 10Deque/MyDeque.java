@@ -123,7 +123,15 @@ public class MyDeque<Type>{
 	if(size() == 0){
 	    throw new NoSuchElementException();
 	}
-	
+	Type returnValue = array[start];
+	array[start] = null;
+
+	start++;
+	if(start >= array.length){
+	    start = 0;
+	}
+	size--;
+	return returnValue;
     }
 
 }

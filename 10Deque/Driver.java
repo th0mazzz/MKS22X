@@ -42,9 +42,38 @@ public class Driver{
 	System.out.println(b);
 	*/
 
-	MyDeque c = new MyDeque(-1);
+	MyDeque<Integer> c = new MyDeque<>();
+
+	for(int i = 10; i <= 100; i = i + 10){
+	    
+	    c.addFirst(new Integer (i));
+	}
+	System.out.println(c);
+	
+	for(int i = 10; i <= 40; i = i + 10){
+	    
+	    c.removeFirst();
+	}
+
+	c.addLast(new Integer (-20));
+	c.addLast(new Integer (-30));
+
+	
+	c.removeFirst();
+	c.removeFirst();
+	c.removeFirst();
+	c.removeFirst();
+	c.removeFirst();
+	c.removeFirst();
+	c.removeFirst();
+	c.addFirst(new Integer (1));
+	c.removeFirst();
+
+	
+	
 	
 
+	System.out.println(c);
     }
     
 }
