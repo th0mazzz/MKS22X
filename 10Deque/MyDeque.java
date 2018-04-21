@@ -1,3 +1,4 @@
+import java.util.*;
 public class MyDeque<Type>{
 
     private int start, end;
@@ -14,6 +15,9 @@ public class MyDeque<Type>{
     
     @SuppressWarnings("unchecked") 
     public MyDeque(int initialCapacity){
+	if(initialCapacity < 0){
+	    throw new IllegalArgumentException();
+	}
 	array = (Type[])new Object[initialCapacity];
 	start = -1;
 	end = -1;
@@ -93,7 +97,7 @@ public class MyDeque<Type>{
 	}
     }
 
-    public void addLast(Type element){
+    public void addLast(Type element){ //exception
 	if(size() == 0){
 	    start = 0;
 	    end = 0;
@@ -115,5 +119,11 @@ public class MyDeque<Type>{
 	}
     }
 
+    public Type removeFirst(){
+	if(size() == 0){
+	    throw new NoSuchElementException();
+	}
+	
+    }
 
 }

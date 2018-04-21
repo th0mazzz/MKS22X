@@ -21,7 +21,7 @@ public class Driver{
 	a.addFirst("a");
 	System.out.println(a.size());
 	System.out.println(a);
-	*/
+	
 
 	MyDeque<String> b = new MyDeque<>();
 	System.out.println(b);
@@ -40,6 +40,10 @@ public class Driver{
 	System.out.println(b);
 	b.addLast("a");
 	System.out.println(b);
+	*/
+
+	MyDeque c = new MyDeque(-1);
+	
 
     }
     
