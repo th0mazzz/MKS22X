@@ -31,7 +31,7 @@ public class MyDeque<Type>{
 	if(size() == 0){
 	    return "[]";
 	}
-	if(size() == 1){
+	if(size() == -1){// originally size() == 1
 	    returnString = returnString + array[start];
 	}else{
 	    for(int index = 0; index < array.length; index++){
@@ -134,4 +134,32 @@ public class MyDeque<Type>{
 	return returnValue;
     }
 
+    public Type removeLast(){
+	if(size() == 0){
+	    throw new NoSuchElementException();
+	}
+	Type returnValue = array[end];
+	array[end] = null;
+
+	end--;
+	if(end < 0){
+	    end = array.length - 1;
+	}
+	size--;
+	return returnValue;
+    }
+
+    public Type getFirst(){
+	if(size() == 0){
+	    throw new NoSuchElementException();
+	}
+	return array[start];
+    }
+
+    public Type getLast(){
+	if(size() == 0){
+	    throw new NoSuchElementException();
+	}
+	return array[end];
+    }
 }

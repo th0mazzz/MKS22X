@@ -42,6 +42,7 @@ public class Driver{
 	System.out.println(b);
 	*/
 
+	/*
 	MyDeque<Integer> c = new MyDeque<>();
 
 	for(int i = 10; i <= 100; i = i + 10){
@@ -69,11 +70,50 @@ public class Driver{
 	c.addFirst(new Integer (1));
 	c.removeFirst();
 
-	
-	
-	
-
 	System.out.println(c);
+	*/
+
+	/*
+	MyDeque<Integer> d = new MyDeque<>(5);
+
+	System.out.println(d);
+
+	for(int i = 1; i <= 5; i++){
+	    d.addLast(i);
+	}
+
+	System.out.println(d);
+
+	for(int i = 0; i < 3; i++){
+	    System.out.println(d.removeLast());
+	}
+
+	System.out.println(d);
+
+	d.addFirst(new Integer (0));
+	d.addFirst(new Integer (-1));
+
+	System.out.println(d);
+
+	System.out.println(d.removeLast());
+	System.out.println(d.removeLast());
+	System.out.println(d.removeLast());
+	
+	System.out.println(d);
+	*/
+
+	MyDeque<String> e = new MyDeque<>(5);
+
+	e.addFirst("Apple");
+	e.addLast("Banana");
+	e.addLast("Coconut");
+	e.addFirst("Lychee");
+	e.addLast("Durian");
+
+	System.out.println(e);
+	System.out.println(e.getFirst());
+	System.out.println(e.getLast());
+	
     }
     
 }
