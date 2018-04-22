@@ -76,6 +76,9 @@ public class MyDeque<Type>{
     }
     
     public void addFirst(Type element){ //exception
+	if(element == null){
+	    throw new NullPointerException();
+	}
 	if(size() == 0){
 	    start = 0;
 	    end = 0;
@@ -98,6 +101,9 @@ public class MyDeque<Type>{
     }
 
     public void addLast(Type element){ //exception
+	if(element == null){
+	    throw new NullPointerException();
+	}
 	if(size() == 0){
 	    start = 0;
 	    end = 0;
