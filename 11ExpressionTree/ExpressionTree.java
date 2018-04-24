@@ -12,16 +12,33 @@ public class ExpressionTree{
     /*return the expression as a postfix notation string without parenthesis*/
     /* The sample tree would be: "3 2 10 * +"     */
     public String toStringPostfix(){
-	/*you are to write this method*/
-	return "";
+	
+	String returnString = "";
+	if(isValue()){
+	    return getValue() + " ";
+	}else{
+	    ExpressionTree left = getLeft();
+	    ExpressionTree right = getRight();
+	    return returnString + left.toStringPrefix() + right.toStringPrefix() + getOp() + " ";
+	}
+	
     }
   
     /*return the expression as a prefix notation string without parenthesis*/
     /* The sample tree would be: "+ 3 * 2 10"     */
   
     public String toStringPrefix(){
-	/*you are to write this method*/
-	return "";
+
+	String returnString = "";
+	if(isOp()){
+	    //returnString = returnString + getOp() + " ";
+	    ExpressionTree left = getLeft();
+	    ExpressionTree right = getRight();
+	    return returnString + getOp() + " " + left.toStringPrefix() + right.toStringPrefix();
+	}else{
+	    return getValue() + " ";
+	}
+	
     }
   
   
