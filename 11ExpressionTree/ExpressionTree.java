@@ -19,7 +19,7 @@ public class ExpressionTree{
 	}else{
 	    ExpressionTree left = getLeft();
 	    ExpressionTree right = getRight();
-	    return returnString + left.toStringPrefix() + right.toStringPrefix() + getOp() + " ";
+	    return returnString + left.toStringPostfix() + right.toStringPostfix() + getOp() + " ";
 	}
 	
     }
