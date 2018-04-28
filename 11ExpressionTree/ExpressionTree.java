@@ -3,31 +3,31 @@ public class ExpressionTree{
 
   
     /*return the expression as an infix notation string with parenthesis*/
-    /* The sample tree would be: "( 3 + (2 * 10))"     */
+    /* The sample tree would be: "(3 + (2 * 10))"     */
     public String toString(){
 
 	String returnString = "";
 	if(isValue()){
-	    return getValue() + " ";
+	    return getValue() + "";
 	}else{
 	    ExpressionTree left = getLeft();
 	    ExpressionTree right = getRight();
-	    return returnString + "(" +  left.toString() + getOp() + " " + right.toString() + ")";
+	    return returnString + "(" +  left.toString() + " " + getOp() + " " + right.toString() + ")";
 	}
 	
     }
   
     /*return the expression as a postfix notation string without parenthesis*/
-    /* The sample tree would be: "3 2 10 * +"     */
-    public String toStringPostfix(){
+    /* The sample tree would be: "3 2 10 * +"     */ 
+    public String toStringPostfix(){ //has extra space at end
 	
 	String returnString = "";
 	if(isValue()){
-	    return getValue() + " ";
+	    return getValue() + "";
 	}else{
 	    ExpressionTree left = getLeft();
 	    ExpressionTree right = getRight();
-	    return returnString + left.toStringPostfix() + right.toStringPostfix() + getOp() + " ";
+	    return returnString + left.toStringPostfix() + " " + right.toStringPostfix() + " "+ getOp();
 	}
 	
     }
@@ -39,12 +39,11 @@ public class ExpressionTree{
 
 	String returnString = "";
 	if(isOp()){
-	    //returnString = returnString + getOp() + " ";
 	    ExpressionTree left = getLeft();
 	    ExpressionTree right = getRight();
-	    return returnString + getOp() + " " + left.toStringPrefix() + right.toStringPrefix();
+	    return returnString + getOp() + " " + left.toStringPrefix() + " " + right.toStringPrefix();
 	}else{
-	    return getValue() + " ";
+	    return "" + getValue();
 	}
 	
     }
