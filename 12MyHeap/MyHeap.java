@@ -1,31 +1,34 @@
 import java.util.*;
-public class MyHeap{
+public class MyHeap<Type extends Comparable<Type>>{
 
-    public String[] array;
-    public int size;
-    public boolean isMax;
-    
+    private Type[] array;
+    private int size;
+    private boolean isMax;
+
+    @SuppressWarnings("unchecked")
     public MyHeap(){
-	array = new String[10];
+	array = (Type[]) new Comparable[10];
 	size = 0;
 	isMax = true;
     }
 
+    @SuppressWarnings("unchecked")
     public MyHeap(boolean isMax){
-	array = new String[10];
+	array = (Type[]) new Comparable[10];
 	size = 0;
 	this.isMax = isMax;
     }
 
+    @SuppressWarnings("unchecked")
     public void resize(){
-	String[] larger = new String[array.length * 2];
+	Type[] larger = (Type[]) new Comparable[array.length * 2];
 	for(int i = 0; i < array.length; i++){
 	    larger[i] = array[i];
 	}
 	array = larger;
     }
 
-    public void add(String s){
+    public void add(Type s){
 	if(size() == array.length){
 	    resize();
 	}
@@ -34,7 +37,7 @@ public class MyHeap{
 	int parent = (size() - 1) / 2;
 	if(isMax){
 	    while(array[current].compareTo(array[parent]) > 0){
-		String temp = array[current];
+		Type temp = array[current];
 		array[current] = array[parent];
 		array[parent] = temp;
 		current = parent;
@@ -42,7 +45,7 @@ public class MyHeap{
 	    }
 	}else{
 	    while(array[current].compareTo(array[parent]) < 0){
-		String temp = array[current];
+		Type temp = array[current];
 		array[current] = array[parent];
 		array[parent] = temp;
 		current = parent;
@@ -52,11 +55,11 @@ public class MyHeap{
 	size++;
     }
 
-    public String remove(){
+    public Type remove(){
 	if(size() == 0){
 	    throw new NoSuchElementException();
 	}
-	String oldRoot = array[0];
+	Type oldRoot = array[0];
 	array[0] = array[size() - 1];
 	array[size() - 1] = null;
 	size--;
@@ -67,14 +70,14 @@ public class MyHeap{
 	    while(left < size() && array[current].compareTo(array[left]) < 0 &&
 	    array[current].compareTo(array[right]) < 0){
 		if(array[left].compareTo(array[right]) > 0){
-		    String temp = array[left];
+		    Type temp = array[left];
 		    array[left] = array[current];
 		    array[current] = temp;
 		    current = left;
 		    left = current * 2 + 1;
 		    right = current * 2 + 2;
 		}else{
-		    String temp = array[right];
+		    Type temp = array[right];
 		    array[right] = array[current];
 		    array[current] = temp;
 		    current = right;
@@ -86,14 +89,14 @@ public class MyHeap{
 	    while(left < size() && array[current].compareTo(array[left]) > 0 &&
 		  array[current].compareTo(array[right]) > 0){
 		if(array[left].compareTo(array[right]) < 0){
-		    String temp = array[left];
+		    Type temp = array[left];
 		    array[left] = array[current];
 		    array[current] = temp;
 		    current = left;
 		    left = current * 2 + 1;
 		    right = current * 2 + 2;
 		}else{
-		    String temp = array[right];
+		    Type temp = array[right];
 		    array[right] = array[current];
 		    array[current] = temp;
 		    current = right;
@@ -105,7 +108,7 @@ public class MyHeap{
 	return oldRoot;
     }
     
-    public String peek(){
+    public Type peek(){
 	if(size() == 0){
 	    throw new NoSuchElementException();
 	}
@@ -126,7 +129,7 @@ public class MyHeap{
     }
 
     public static void main(String[] args){
-	MyHeap a = new MyHeap(false);
+	MyHeap<String> a = new MyHeap<>(false);
 	System.out.println(a);
 	//a.resize();
 	a.add("b");
