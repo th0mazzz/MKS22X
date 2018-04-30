@@ -106,7 +106,10 @@ public class MyHeap{
     }
     
     public String peek(){
-	return "placeholder";
+	if(size() == 0){
+	    throw new NoSuchElementException();
+	}
+	return array[0];
     }
 
     public int size(){
