@@ -67,7 +67,7 @@ public class MyHeap<Type extends Comparable<Type>>{
 	int left = current * 2 + 1;
 	int right = current * 2 + 2;
 	if(isMax){
-	    while(left < size() && array[current].compareTo(array[left]) < 0 &&
+	    while(right < size() && array[current].compareTo(array[left]) < 0 &&
 	    array[current].compareTo(array[right]) < 0){
 		if(array[left].compareTo(array[right]) > 0){
 		    Type temp = array[left];
@@ -86,7 +86,7 @@ public class MyHeap<Type extends Comparable<Type>>{
 		}
 	    }
 	}else{
-	    while(left < size() && array[current].compareTo(array[left]) > 0 &&
+	    while(right < size() && array[current].compareTo(array[left]) > 0 &&
 		  array[current].compareTo(array[right]) > 0){
 		if(array[left].compareTo(array[right]) < 0){
 		    Type temp = array[left];
@@ -119,9 +119,6 @@ public class MyHeap<Type extends Comparable<Type>>{
 	return size;
     }
 
-    public void setArray(Type[] newArray){
-	array = newArray;
-    }
 
     public String toString(){
 	String returnString = "[";
@@ -146,8 +143,15 @@ public class MyHeap<Type extends Comparable<Type>>{
 	a.add("h");
 	a.add("n");
 	a.add("a");
+
+	System.out.println(a);
+	
+	System.out.println(a.remove());
 	System.out.println(a);
 	System.out.println(a.remove());
+	System.out.println(a);
+	System.out.println(a.remove());
+	
 	System.out.println(a);
     }
 }

@@ -5,35 +5,53 @@ public class RunningMedian{
     private MyHeap<Double> min, max; 
     
     public RunningMedian(){
-	min = new MyHeap<>();
-	max = new MyHeap<>(false);
+	min = new MyHeap<>(false);
+	max = new MyHeap<>();
 	size = 0;
     }
 
     public void add(Double element){
-	if(size == 0){
+	if(size() == 0){
 	    max.add(element);
 	}else{
 	    if(element >= getMedian()){
-		max.add(element);
-	    }else{
 		min.add(element);
+		System.out.println(min);
+	    }else{
+		max.add(element);
 	    }
 	}
+
+	if(max.size() - min.size() == 2){
+	    min.add(max.remove());
+	}
+	if(min.size() - max.size() == 2){
+	    max.add(min.remove());
+	}
+	
+	size++;
     }
 
     public Double getMedian(){
 	if(size() == 0){
 	    throw new NoSuchElementException();
 	}
-	if(Math.abs(min.size() - max.size()) == 1){
-	    if(min.size() > max.size()){
-		return min.peek();
-	    }else{
+	if(min.size() == 0 || max.size() == 0){
+	    if(min.size() == 0){
 		return max.peek();
+	    }else{
+		return min.peek();
 	    }
 	}else{
-	    return (max.peek() + min.peek()) / 2.0;
+	    if(Math.abs(min.size() - max.size()) == 1){
+		if(min.size() > max.size()){
+		    return min.peek();
+		}else{
+		    return max.peek();
+		}
+	    }else{
+		return (max.peek() + min.peek()) / 2.0;
+	    }
 	}
     }
 
@@ -47,8 +65,13 @@ public class RunningMedian{
 
     public static void main(String[] args){
 	RunningMedian a = new RunningMedian();
-	System.out.println(a);
-	a.add(2.3);
+	//System.out.println(a);
+	a.add(10.0);
+	a.add(30.0);
+	a.add(40.0);
+	a.add(90.0);
+	//a.add(80.0);
+	System.out.println("med: " + a.getMedian());
 	System.out.println(a);
     }
 }
