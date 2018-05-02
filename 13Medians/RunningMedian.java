@@ -16,7 +16,6 @@ public class RunningMedian{
 	}else{
 	    if(element >= getMedian()){
 		min.add(element);
-		System.out.println(min);
 	    }else{
 		max.add(element);
 	    }
