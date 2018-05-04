@@ -126,10 +126,6 @@ public class MyHeap<Type extends Comparable<Type>>{
 	return size;
     }
 
-    public Type[] obtainArray(){
-	return array;
-    }
-
     public String toString(){
 	String returnString = "[";
 	for(int index = 0; index < array.length; index++){

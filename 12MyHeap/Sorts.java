@@ -5,7 +5,7 @@ public class Sorts{
 	MyHeap<Integer> heap = heapify(array);
 	while(heap.size() > 0){
 	    array[size(array) - 1] = heap.remove();
-	    System.out.println(heap);
+	    //System.out.println(heap);
 	}
     }
     
@@ -50,9 +50,9 @@ public class Sorts{
 	    a[i] = new Integer ((int)(Math.random() * 10));
 	}
 
-	System.out.println("....." + print(a));
+	//System.out.println("....." + print(a));
 	heapsort(a);
-	System.out.println("....." + print(a));
+	//System.out.println("....." + print(a));
 	
     }
     
