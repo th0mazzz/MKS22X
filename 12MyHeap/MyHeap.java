@@ -20,6 +20,13 @@ public class MyHeap<Type extends Comparable<Type>>{
     }
 
     @SuppressWarnings("unchecked")
+    public MyHeap(Type[] array){
+	this.array = array;
+	size = 0;
+	isMax = true;
+    }
+
+    @SuppressWarnings("unchecked")
     public void resize(){
 	Type[] larger = (Type[]) new Comparable[array.length * 2];
 	for(int i = 0; i < array.length; i++){
@@ -119,6 +126,10 @@ public class MyHeap<Type extends Comparable<Type>>{
 	return size;
     }
 
+    public Type[] obtainArray(){
+	return array;
+    }
+
     public String toString(){
 	String returnString = "[";
 	for(int index = 0; index < array.length; index++){
@@ -127,7 +138,7 @@ public class MyHeap<Type extends Comparable<Type>>{
 	returnString = returnString.substring(0, returnString.length() - 2);
 	return returnString + "]";
     }
-
+    
     public static void main(String[] args){
 	MyHeap<String> a = new MyHeap<>(false);
 	System.out.println(a);

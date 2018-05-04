@@ -2,22 +2,24 @@ import java.util.*;
 public class Sorts{
     
     public static void heapsort(Integer[] array){
-	heapify(array);
+	MyHeap<Integer> heap = heapify(array);
+	while(heap.size() > 0){
+	    array[size(array) - 1] = heap.remove();
+	    System.out.println(heap);
+	}
     }
     
-    public static void heapify(Integer[] array){
-	for(int i = size(array) - 1; i >= 0; i--){
-	    int parent = (i - 1) / 2;
-	    if(array[parent] < array[i]){
-		swap(parent, i, array);
-	    }
-	    
+    public static MyHeap<Integer> heapify(Integer[] array){
+	MyHeap<Integer> heap = new MyHeap<>();
+	for(int i = 0; i < size(array); i++){
+	    heap.add(array[i]);
 	}
+	System.out.println(heap);
+	return heap;
     }
 
     public static void swap(int index1, int index2, Integer[] array){
 	Integer storage = array[index1];
-
 	array[index1] = array[index2];
 	array[index2] = storage;
     }
@@ -42,9 +44,15 @@ public class Sorts{
     }
     
     public static void main(String[] args){
-	Integer[] a = {new Integer (2), new Integer (100), new Integer (49), new Integer (22)};
-	heapify(a);
-	System.out.println(print(a));
+	Integer[] a = new Integer[10];
+	
+	for(int i = 0; i < 10; i++){
+	    a[i] = new Integer ((int)(Math.random() * 10));
+	}
+
+	System.out.println("....." + print(a));
+	heapsort(a);
+	System.out.println("....." + print(a));
 	
     }
     
