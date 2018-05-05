@@ -3,9 +3,12 @@ public class Sorts{
     
     public static void heapsort(Integer[] array){
 	MyHeap<Integer> heap = heapify(array);
+	int counter = size(array) - 1;
 	while(heap.size() > 0){
-	    array[size(array) - 1] = heap.remove();
-	    //System.out.println(heap);
+	    array[counter] = heap.remove();
+	    counter--;
+	    System.out.println(print(array));
+	    //System.out.println("..." + heap);
 	}
     }
     
@@ -14,7 +17,7 @@ public class Sorts{
 	for(int i = 0; i < size(array); i++){
 	    heap.add(array[i]);
 	}
-	System.out.println(heap);
+	//System.out.println(heap);
 	return heap;
     }
 
@@ -50,9 +53,9 @@ public class Sorts{
 	    a[i] = new Integer ((int)(Math.random() * 10));
 	}
 
-	//System.out.println("....." + print(a));
+	System.out.println("....." + print(a));
 	heapsort(a);
-	//System.out.println("....." + print(a));
+	System.out.println("....." + print(a));
 	
     }
     
