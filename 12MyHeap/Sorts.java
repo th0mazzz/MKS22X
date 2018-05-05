@@ -7,7 +7,7 @@ public class Sorts{
 	while(heap.size() > 0){
 	    array[counter] = heap.remove();
 	    counter--;
-	    System.out.println(print(array));
+	    //System.out.println(print(array));
 	    //System.out.println("..." + heap);
 	}
     }
@@ -48,6 +48,7 @@ public class Sorts{
     
     public static void main(String[] args){
 	Integer[] a = new Integer[10];
+
 	
 	for(int i = 0; i < 10; i++){
 	    a[i] = new Integer ((int)(Math.random() * 10));
