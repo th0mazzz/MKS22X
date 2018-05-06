@@ -65,12 +65,16 @@ public class RunningMedian{
     public static void main(String[] args){
 	RunningMedian a = new RunningMedian();
 	//System.out.println(a);
-	a.add(10.0);
-	a.add(30.0);
-	a.add(40.0);
-	a.add(90.0);
-	//a.add(80.0);
+	a.add(1230.0);
+	a.add(320.0);
+	a.add(440.0);
+	a.add(9560.0);
+	a.add(80.0);
+	a.add(100.0);
+	a.add(442.0);
+	a.add(12398120938.021312443);
 	System.out.println("med: " + a.getMedian());
 	System.out.println(a);
+	System.out.println(a.size());
     }
 }
