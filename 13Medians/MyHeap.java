@@ -20,6 +20,13 @@ public class MyHeap<Type extends Comparable<Type>>{
     }
 
     @SuppressWarnings("unchecked")
+    public MyHeap(Type[] array){
+	this.array = array;
+	size = 0;
+	isMax = true;
+    }
+
+    @SuppressWarnings("unchecked")
     public void resize(){
 	Type[] larger = (Type[]) new Comparable[array.length * 2];
 	for(int i = 0; i < array.length; i++){
@@ -56,6 +63,8 @@ public class MyHeap<Type extends Comparable<Type>>{
     }
 
     public Type remove(){
+	//System.out.println(this);
+	//System.out.println("size: " + size());
 	if(size() == 0){
 	    throw new NoSuchElementException();
 	}
@@ -67,8 +76,8 @@ public class MyHeap<Type extends Comparable<Type>>{
 	int left = current * 2 + 1;
 	int right = current * 2 + 2;
 	if(isMax){
-	    while(right < size() && array[current].compareTo(array[left]) < 0 &&
-	    array[current].compareTo(array[right]) < 0){
+	    while(left < size() && right < size() && (array[current].compareTo(array[left]) < 0 ||
+						      array[current].compareTo(array[right]) < 0)){
 		if(array[left].compareTo(array[right]) > 0){
 		    Type temp = array[left];
 		    array[left] = array[current];
@@ -86,8 +95,8 @@ public class MyHeap<Type extends Comparable<Type>>{
 		}
 	    }
 	}else{
-	    while(right < size() && array[current].compareTo(array[left]) > 0 &&
-		  array[current].compareTo(array[right]) > 0){
+	    while(left < size() && right < size() && (array[current].compareTo(array[left]) > 0 ||
+						      array[current].compareTo(array[right]) > 0)){
 		if(array[left].compareTo(array[right]) < 0){
 		    Type temp = array[left];
 		    array[left] = array[current];
@@ -105,6 +114,13 @@ public class MyHeap<Type extends Comparable<Type>>{
 		}
 	    }
 	}
+	if(size() == 2){
+	    if((isMax && array[0].compareTo(array[1]) < 0) || (!isMax && array[0].compareTo(array[1]) > 0)){
+		Type temp = array[0];
+		array[0] = array[1];
+		array[1] = temp;
+	    }
+	}
 	return oldRoot;
     }
     
@@ -119,7 +135,6 @@ public class MyHeap<Type extends Comparable<Type>>{
 	return size;
     }
 
-
     public String toString(){
 	String returnString = "[";
 	for(int index = 0; index < array.length; index++){
@@ -128,30 +143,24 @@ public class MyHeap<Type extends Comparable<Type>>{
 	returnString = returnString.substring(0, returnString.length() - 2);
 	return returnString + "]";
     }
-
+    
     public static void main(String[] args){
 	MyHeap<String> a = new MyHeap<>(false);
-	System.out.println(a);
-	//a.resize();
-	a.add("b");
-	a.add("b");
-	a.add("c");
-	a.add("d");
-	a.add("e");
 	a.add("f");
+	a.add("d");
+	a.add("y");
+	a.add("e");
+	a.add("d");
 	a.add("g");
-	a.add("h");
-	a.add("n");
-	a.add("a");
-
-	System.out.println(a);
+	a.add("b");
+	a.add("r");
+	a.add("s");
+	a.add("w");
+	for(int i = 0; i < 10; i++){
+	    System.out.println(a.remove());
+	}
 	
-	System.out.println(a.remove());
-	System.out.println(a);
-	System.out.println(a.remove());
-	System.out.println(a);
-	System.out.println(a.remove());
+	//System.out.println(a);
 	
-	System.out.println(a);
     }
 }

@@ -5,8 +5,8 @@ public class RunningMedian{
     private MyHeap<Double> min, max; 
     
     public RunningMedian(){
-	min = new MyHeap<>(false);
-	max = new MyHeap<>();
+	min = new MyHeap<>(false); //all values greater than or equal to med
+ 	max = new MyHeap<>(); //all values smaller than med
 	size = 0;
     }
 
