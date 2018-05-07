@@ -1,3 +1,5 @@
-public class FrontierStack{ //implements frontier
+public class FrontierStack implements Frontier{
 
+    ArrayDeque<Location> stack = new ArrayDeque<>();
+    
 }
