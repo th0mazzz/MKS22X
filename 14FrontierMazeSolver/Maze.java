@@ -10,7 +10,7 @@ public class Maze{
     private char[][]maze;
 
     
-    public Location[] getNeighbors(Location L){ //must complete
+    public Location[] getNeighbors(Location L){
 	int ecks = L.getX();
 	int whys = L.getY();
 	if(ecks >= maze.length || whys >= maze[0].length){
