@@ -13,13 +13,20 @@ public class MazeSolver{
     //0: BFS
     //1: DFS
     public boolean solve(int mode){
-	//initialize your frontier
-	//while there is stuff in the frontier:
-	//  get the next location
-	//  process the location to find the locations (use the maze to do this)
-	//  check if any locations are the end, if you found the end just return true!
-	//  add all the locations to the frontier
-	//when there are no more values in the frontier return false
+
+	if(mode == 0){
+	    frontier = new FrontierQueue();
+
+	    Location start = maze.getStart();
+	    Location end = maze.getEnd();
+	    
+	    frontier.add(start);
+
+	    while(frontier.hasNext()){
+		frontier.add(frontier.next());
+	    }
+	}
+	
 	return false;
     }
 
