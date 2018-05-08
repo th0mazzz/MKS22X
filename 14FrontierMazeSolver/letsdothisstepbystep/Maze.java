@@ -19,7 +19,7 @@ public class Maze{
 
 	int[][] coordinates = { {L.getX(), L.getY() + 1}, {L.getX(), L.getY() - 1},
 				   {L.getX() + 1, L.getY()}, {L.getX() - 1, L.getY()} };
-
+	
 	Location[] neighbors = new Location[4];
 	int neighIndex = 0;
 	
@@ -32,7 +32,14 @@ public class Maze{
 		}
 	    }
 	}
-	
+
+	for(int i = 0; i < 4; i++){
+	    if(neighbors[i] != null){
+		int xcor = neighbors[i].getX();
+		int ycor = neighbors[i].getY();
+		set(xcor, ycor, '?');
+	    }
+	}
 	return neighbors;
     }
     

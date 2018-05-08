@@ -27,7 +27,23 @@ public class MazeSolver{
 	frontier.add(start);
 
 	while(frontier.hasNext()){
-	    frontier.add(frontier.next());
+
+	    Location next = frontier.next();
+
+	    if(next.getX() == end.getX() && next.getY() == end.getY()){
+
+		//if it is the end
+		
+	    }else{
+		
+		Location[] neighbors = maze.getNeighbors(next);
+		for(int i = 0; i < neighbors.length; i++){
+
+		    maze.set(next.getX(), next.getY(), '.');
+		    frontier.add(neighbors[i]);
+		    
+		}
+	    }
 	}
 	
 	
