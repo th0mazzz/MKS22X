@@ -9,38 +9,47 @@ public class Maze{
     Location start,end;
     private char[][]maze;
 
-    
-    public Location[] getNeighbors(Location L){
-	int ecks = L.getX();
-	int whys = L.getY();
-	if(ecks >= maze.length || whys >= maze[0].length){
-	    return null;
-	}
+    /*
 
-	int[][] coordinates = { {L.getX(), L.getY() + 1}, {L.getX(), L.getY() - 1},
-				   {L.getX() + 1, L.getY()}, {L.getX() - 1, L.getY()} };
+      obtain x and y of location L
+      obtain coors of neighbors
+      determine if neighbors are valid neighbors 
+      make neighbors into location objects
+      put location objects into array
+      return array
+
+     */
+    public Location[] getNeighbors(Location L){
 	
-	Location[] neighbors = new Location[4];
-	int neighIndex = 0;
+	int xcor = L.getX(); //obtain xcor and ycor
+	int ycor = L.getY();
+
+	int[][] neighCoors = { {xcor, ycor + 1}, {xcor, ycor - 1}, {xcor - 1, ycor}, {xcor + 1, ycor} }; //make int[][] of location coors
+
+	Location[] preneighbors = new Location[4];
+	int index = 0;
 	
-	for(int i = 0; i < 4; i++){
-	    if(coordinates[i][0] >= 0 && coordinates[i][0] < maze.length &&
-	       coordinates[i][1] >= 0 && coordinates[i][1] < maze[0].length){
-		if(maze[coordinates[i][0]][coordinates[i][1]] == ' ' || maze[coordinates[i][0]][coordinates[i][1]] == 'E'){
-		    neighbors[neighIndex] = new Location(coordinates[i][0], coordinates[i][1], L);
-		    neighIndex++;
+	for(int i = 0; i < 4; i++){ //make viable neighbors into locations and put into preneighbors array
+	    int[] oneNeigh = neighCoors[i];
+	    if(oneNeigh[0] >= 0 && oneNeigh[0] < maze.length && oneNeigh[1] >= 0 && oneNeigh[1] < maze[0].length){
+		if(get(oneNeigh[0], oneNeigh[1]) == ' ' || get(oneNeigh[0], oneNeigh[1]) == 'E'){
+		    preneighbors[index] = new Location(oneNeigh[0], oneNeigh[1], L);
 		}
 	    }
 	}
 
-	for(int i = 0; i < 4; i++){
-	    if(neighbors[i] != null){
-		int xcor = neighbors[i].getX();
-		int ycor = neighbors[i].getY();
-		set(xcor, ycor, '?');
+	Location[] neighbors = new Location[index + 1]; //make array the size of preneighbors
+	int counter = 0;
+
+	for(int i = 0; i < index + 1; i++){ //to make sure end array has no nulls
+	    if(preneighbors[i] != null){
+		neighbors[counter] = preneighbors[i];
+		counter++;
 	    }
 	}
+	
 	return neighbors;
+	
     }
     
     public Location getStart(){
@@ -185,3 +194,37 @@ public class Maze{
 	return ans;
     }
 }
+
+
+/*
+	int ecks = L.getX();
+	int whys = L.getY();
+	if(ecks >= maze.length || whys >= maze[0].length){
+	    return null;
+	}
+
+	int[][] coordinates = { {L.getX(), L.getY() + 1}, {L.getX(), L.getY() - 1},
+				   {L.getX() + 1, L.getY()}, {L.getX() - 1, L.getY()} };
+	
+	Location[] neighbors = new Location[4];
+	int neighIndex = 0;
+	
+	for(int i = 0; i < 4; i++){
+	    if(coordinates[i][0] >= 0 && coordinates[i][0] < maze.length &&
+	       coordinates[i][1] >= 0 && coordinates[i][1] < maze[0].length){
+		if(maze[coordinates[i][0]][coordinates[i][1]] == ' ' || maze[coordinates[i][0]][coordinates[i][1]] == 'E'){
+		    neighbors[neighIndex] = new Location(coordinates[i][0], coordinates[i][1], L);
+		    neighIndex++;
+		}
+	    }
+	}
+
+	for(int i = 0; i < 4; i++){
+	    if(neighbors[i] != null){
+		int xcor = neighbors[i].getX();
+		int ycor = neighbors[i].getY();
+		set(xcor, ycor, '?');
+	    }
+	}
+	return neighbors;
+	*/
