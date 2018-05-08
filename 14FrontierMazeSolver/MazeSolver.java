@@ -16,16 +16,20 @@ public class MazeSolver{
 
 	if(mode == 0){
 	    frontier = new FrontierQueue();
-
-	    Location start = maze.getStart();
-	    Location end = maze.getEnd();
-	    
-	    frontier.add(start);
-
-	    while(frontier.hasNext()){
-		frontier.add(frontier.next());
-	    }
 	}
+	if(mode == 1){
+	    frontier = new FrontierStack();
+	}
+
+	Location start = maze.getStart();
+	Location end = maze.getEnd();
+	    
+	frontier.add(start);
+
+	while(frontier.hasNext()){
+	    frontier.add(frontier.next());
+	}
+	
 	
 	return false;
     }
