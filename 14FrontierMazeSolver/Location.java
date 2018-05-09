@@ -14,7 +14,7 @@ public class Location{
     public Location getPrev(){return previous;}
 
     public String toString(){
-	return "(" + getX() + ", " + getY() + ", [" + getPrev() +"])";
+	return "(" + getX() + ", " + getY() + ")";
     }
 
     public static void main(String[] args){

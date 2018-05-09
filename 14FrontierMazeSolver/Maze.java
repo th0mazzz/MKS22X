@@ -34,14 +34,15 @@ public class Maze{
 	    if(oneNeigh[0] >= 0 && oneNeigh[0] < maze.length && oneNeigh[1] >= 0 && oneNeigh[1] < maze[0].length){
 		if(get(oneNeigh[0], oneNeigh[1]) == ' ' || get(oneNeigh[0], oneNeigh[1]) == 'E'){
 		    preneighbors[index] = new Location(oneNeigh[0], oneNeigh[1], L);
+		    index++;
 		}
 	    }
 	}
 
-	Location[] neighbors = new Location[index + 1]; //make array the size of preneighbors
+	Location[] neighbors = new Location[index]; //make array the size of preneighbors
 	int counter = 0;
 
-	for(int i = 0; i < index + 1; i++){ //to make sure end array has no nulls
+	for(int i = 0; i < index; i++){ //to make sure end array has no nulls
 	    if(preneighbors[i] != null){
 		neighbors[counter] = preneighbors[i];
 		counter++;
@@ -193,6 +194,20 @@ public class Maze{
 	}
 	return ans;
     }
+
+    public static void main(String[] args){
+	
+	Maze a = new Maze("data2.dat");
+
+	Location b = new Location(1, 1, null);
+
+	Location[] array = a.getNeighbors(b);
+
+	for(int i = 0; i < array.length; i++){
+	    System.out.println(array[i]);
+	}
+    }
+    
 }
 
 

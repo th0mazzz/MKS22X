@@ -43,22 +43,34 @@ public class MazeSolver{
 	frontier.add(start);
 
 	while(frontier.hasNext()){
+
+	    System.out.println(frontier); //print
 	    
 	    Location next = frontier.next();
 
 	    if(maze.get(next.getX(), next.getY()) == 'E'){
 
-		Location prev = next;
+		Location prev = next.getPrev();
 		while(prev.getPrev() != null){
 		    maze.set(prev.getX(), prev.getY(), '@');
 		    System.out.println(maze); //print statement
+		    try {
+			Thread.sleep(100);
+		    }
+		    catch (InterruptedException e) {
+		    }
+		    maze.clearTerminal();
+		    prev = prev.getPrev();
 		}
 
+		System.out.println(maze);
+		
 		return true;
 		
 	    }else{
-		
-		maze.set(next.getX(), next.getY(), '.');
+		if(maze.get(next.getX(), next.getY()) != 'S'){
+		    maze.set(next.getX(), next.getY(), '.');
+		}
 
 		Location[] neighs = maze.getNeighbors(next);
 		for(int i = 0; i < neighs.length; i++){
@@ -66,8 +78,14 @@ public class MazeSolver{
 		}
 
 		System.out.println(maze); //another one
-		
+		try {
+		    Thread.sleep(50);
+		}
+		catch (InterruptedException e) {
+		}
+		maze.clearTerminal();
 	    }
+	    
 	}
 	
 	return false;
