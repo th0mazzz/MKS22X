@@ -18,5 +18,30 @@ public class FrontierStack implements Frontier{
     public boolean hasNext(){
 	return stack.peekLast() != null;
     }
-    
+
+    public String toString(){
+	Object[] array = stack.toArray();
+	String s = "Head\n";
+	for(int i = 0; i < array.length; i++){
+	    s = s + array[i].toString() + "\n";
+	}
+	return s + "\nEnd";
+    }
+
+    public static void main(String[] args){
+	FrontierStack a = new FrontierStack();
+	a.add(new Location(6, 7, null));
+
+	Location b = new Location(9, 10, null);
+	Location c = new Location(4, 4, b);
+
+	a.add(b);
+	a.add(c);
+
+	System.out.println(a);
+	a.next();
+	System.out.println(a);
+	a.next();
+	System.out.println(a);
+    }
 }
