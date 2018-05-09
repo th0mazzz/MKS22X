@@ -1,7 +1,24 @@
 public class FrontierPriorityQueue implements Frontier{
     
-    MyHeap priority = new MyHeap();
+    MyHeap<Location> priority;
     
-    //need to implement frontier
-    
+    public FrontierPriorityQueue(){
+	priority = new MyHeap<>(false);
+    }
+
+    public Location next(){
+	return priority.remove();
+    }
+
+    public void add(Location n){
+	priority.add(n);
+    }
+
+    public boolean hasNext(){
+	return priority.peek() != null;
+    }
+
+    public String toString(){
+	return priority.toString();
+    }
 }

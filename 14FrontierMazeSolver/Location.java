@@ -26,6 +26,14 @@ public class Location implements Comparable<Location>{
 	return "(" + getX() + ", " + getY() + ")";
     }
 
+    public int compareTo(Location other){
+	if(distance < other.distance){
+	    return -1;
+	}else{
+	    return 1;
+	}
+    }
+    
     public static void main(String[] args){
 	Location a = new Location(3, 2, null);
 	System.out.println(a);

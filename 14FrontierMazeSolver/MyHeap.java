@@ -126,7 +126,7 @@ public class MyHeap<Type extends Comparable<Type>>{
     
     public Type peek(){
 	if(size() == 0){
-	    throw new NoSuchElementException();
+	    return null;
 	}
 	return array[0];
     }

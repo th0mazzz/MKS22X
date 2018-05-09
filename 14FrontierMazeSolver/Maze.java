@@ -128,6 +128,8 @@ public class Maze{
 	start = new Location(startr,startc,null);
     }
 
+    //////////////////write calc location here
+    
     public String toStringColor(){
 	return toStringColor(50);
     }

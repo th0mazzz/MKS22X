@@ -36,6 +36,9 @@ public class MazeSolver{
 	if(mode == 1){
 	    frontier = new FrontierStack();
 	}
+	if(mode != 0 && mode != 1){
+	    frontier = new FrontierPriorityQueue();
+	}
 
 	Location start = maze.getStart();
 	Location end = maze.getEnd();
@@ -79,7 +82,7 @@ public class MazeSolver{
 
 		System.out.println(maze); //another one
 		try {
-		    Thread.sleep(50);
+		    Thread.sleep(750);
 		}
 		catch (InterruptedException e) {
 		}
