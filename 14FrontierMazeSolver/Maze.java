@@ -33,7 +33,7 @@ public class Maze{
 	    int[] oneNeigh = neighCoors[i];
 	    if(oneNeigh[0] >= 0 && oneNeigh[0] < maze.length && oneNeigh[1] >= 0 && oneNeigh[1] < maze[0].length){
 		if(get(oneNeigh[0], oneNeigh[1]) == ' ' || get(oneNeigh[0], oneNeigh[1]) == 'E'){
-		    preneighbors[index] = new Location(oneNeigh[0], oneNeigh[1], L);
+		    preneighbors[index] = new Location(oneNeigh[0], oneNeigh[1], L, calcDist(oneNeigh[0], oneNeigh[1]));		    
 		    index++;
 		}
 	    }
@@ -60,6 +60,9 @@ public class Maze{
 	return end;
     }
 
+    public int calcDist(int x, int y){
+	return Math.abs(getEnd().getX() - x) + Math.abs(getEnd().getY() - y);
+    }
 
     private static String go(int x,int y){
 	return ("\033[" + x + ";" + y + "H");

@@ -14,7 +14,7 @@ public class MazeSolver{
     //1: DFS
 
     /*
-
+      
       adds start to frontier
       while frontier has next
       if element is the end {
@@ -82,7 +82,7 @@ public class MazeSolver{
 
 		System.out.println(maze); //another one
 		try {
-		    Thread.sleep(750);
+		    Thread.sleep(100);
 		}
 		catch (InterruptedException e) {
 		}

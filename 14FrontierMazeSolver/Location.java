@@ -23,7 +23,7 @@ public class Location implements Comparable<Location>{
     public double getDist(){return distance;}
 
     public String toString(){
-	return "(" + getX() + ", " + getY() + ")";
+	return "(" + getX() + ", " + getY() + "dist: " + getDist() +")";
     }
 
     public int compareTo(Location other){
