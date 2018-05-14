@@ -58,7 +58,7 @@ public class MazeSolver{
 		    maze.set(prev.getX(), prev.getY(), '@');
 		    System.out.println(maze); //print statement
 		    try {
-			Thread.sleep(100);
+			Thread.sleep(50);
 		    }
 		    catch (InterruptedException e) {
 		    }
@@ -78,11 +78,14 @@ public class MazeSolver{
 		Location[] neighs = maze.getNeighbors(next);
 		for(int i = 0; i < neighs.length; i++){
 		    frontier.add(neighs[i]);
+		    if(maze.get(neighs[i].getX(), neighs[i].getY()) != 'E'){
+		    maze.set(neighs[i].getX(), neighs[i].getY(), '?');
+		    }
 		}
 
 		System.out.println(maze); //another one
 		try {
-		    Thread.sleep(100);
+		    Thread.sleep(50);
 		}
 		catch (InterruptedException e) {
 		}
