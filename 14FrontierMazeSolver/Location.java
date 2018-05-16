@@ -4,6 +4,7 @@ public class Location implements Comparable<Location>{
     private Location previous;
     private double distance;
     private double distanceSoFar;
+    private double totalDist;
 
     public Location (int _x, int _y, Location prev){
 	x = _x;
@@ -47,11 +48,11 @@ public class Location implements Comparable<Location>{
 		return 1;
 	    }
 	}else{
-	    if(distanceSoFar < other.distanceSoFar){
+	    if(distanceSoFar + distance < other.distanceSoFar + other.distance){
 		return -1;
 	    }else{
-		
-	    }return 1;
+		return 1;
+	    }
 	}
     }
     

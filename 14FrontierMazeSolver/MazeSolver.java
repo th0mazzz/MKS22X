@@ -6,7 +6,7 @@ public class MazeSolver{
 
     public MazeSolver(String mazeText){
 	maze = new Maze(mazeText);
-	animate = false;
+	animate = true;
     }
 
     //Default to BFS
@@ -99,7 +99,7 @@ public class MazeSolver{
 		
 		    System.out.println(maze); //another one
 		    try {
-			Thread.sleep(50);
+			Thread.sleep(155);
 		    }
 		    catch (InterruptedException e) {
 		    }
