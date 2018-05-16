@@ -1,9 +1,12 @@
 public class MazeSolver{
     private Maze maze;
     private Frontier frontier;
+    private boolean animate;
+    
 
     public MazeSolver(String mazeText){
 	maze = new Maze(mazeText);
+	animate = false;
     }
 
     //Default to BFS
@@ -51,7 +54,7 @@ public class MazeSolver{
 
 	while(frontier.hasNext()){
 
-	    System.out.println(frontier); //print
+	    //System.out.println(frontier); //print
 	    
 	    Location next = frontier.next();
 
@@ -60,13 +63,18 @@ public class MazeSolver{
 		Location prev = next.getPrev();
 		while(prev.getPrev() != null){
 		    maze.set(prev.getX(), prev.getY(), '@');
-		    System.out.println(maze); //print statement
-		    try {
-			Thread.sleep(50);
+
+		    if(animate){
+		    
+			System.out.println(maze); //print statement
+			try {
+			    Thread.sleep(50);
+			}
+			catch (InterruptedException e) {
+			}
+			maze.clearTerminal();
 		    }
-		    catch (InterruptedException e) {
-		    }
-		    maze.clearTerminal();
+		    
 		    prev = prev.getPrev();
 		}
 
@@ -87,13 +95,18 @@ public class MazeSolver{
 		    }
 		}
 
-		System.out.println(maze); //another one
-		try {
-		    Thread.sleep(50);
+		if(animate){
+		
+		    System.out.println(maze); //another one
+		    try {
+			Thread.sleep(50);
+		    }
+		    catch (InterruptedException e) {
+		    }
+		    maze.clearTerminal();
+
 		}
-		catch (InterruptedException e) {
-		}
-		maze.clearTerminal();
+		
 	    }
 	    
 	}
