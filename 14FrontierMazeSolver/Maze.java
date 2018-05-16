@@ -8,6 +8,7 @@ public class Maze{
     private static final String SHOW_CURSOR =  "\033[?25h";
     Location start,end;
     private char[][]maze;
+    private boolean isAStar;
 
     /*
 
@@ -33,8 +34,13 @@ public class Maze{
 	    int[] oneNeigh = neighCoors[i];
 	    if(oneNeigh[0] >= 0 && oneNeigh[0] < maze.length && oneNeigh[1] >= 0 && oneNeigh[1] < maze[0].length){
 		if(get(oneNeigh[0], oneNeigh[1]) == ' ' || get(oneNeigh[0], oneNeigh[1]) == 'E'){
-		    preneighbors[index] = new Location(oneNeigh[0], oneNeigh[1], L, calcDist(oneNeigh[0], oneNeigh[1]));		    
-		    index++;
+		    if(!isAStar){
+			preneighbors[index] = new Location(oneNeigh[0], oneNeigh[1], L, calcDist(oneNeigh[0], oneNeigh[1]));		    
+			index++;
+		    }else{
+			preneighbors[index] = new Location(oneNeigh[0], oneNeigh[1], L, calcDist(oneNeigh[0], oneNeigh[1]), L.getDistSoFar() + 1);		    
+			index++;
+		    }
 		}
 	    }
 	}
@@ -64,6 +70,10 @@ public class Maze{
 	return Math.abs(getEnd().getX() - x) + Math.abs(getEnd().getY() - y);
     }
 
+    public void setAStar(boolean value){
+	isAStar = value;
+    }
+
     private static String go(int x,int y){
 	return ("\033[" + x + ";" + y + "H");
     }
@@ -75,6 +85,8 @@ public class Maze{
 	System.out.println(CLEAR_SCREEN+"\033[1;1H");
     }
     public Maze(String filename){
+	isAStar = false;
+	
 	ArrayList<char[]> lines = new ArrayList<char[]>();
 	int startr=-1, startc=-1;
 	int endr=-1,endc=-1;
@@ -130,8 +142,6 @@ public class Maze{
 	end = new Location(endr,endc,null);
 	start = new Location(startr,startc,null);
     }
-
-    //////////////////write calc location here
     
     public String toStringColor(){
 	return toStringColor(50);

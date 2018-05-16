@@ -36,8 +36,12 @@ public class MazeSolver{
 	if(mode == 1){
 	    frontier = new FrontierStack();
 	}
-	if(mode != 0 && mode != 1){
+	if(mode == 2){
 	    frontier = new FrontierPriorityQueue();
+	}
+	if(mode != 0 && mode != 1 && mode != 2){
+	    frontier = new FrontierPriorityQueue();
+	    maze.setAStar(true);
 	}
 
 	Location start = maze.getStart();
