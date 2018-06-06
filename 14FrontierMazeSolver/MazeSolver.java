@@ -6,7 +6,7 @@ public class MazeSolver{
 
     public MazeSolver(String mazeText){
 	maze = new Maze(mazeText);
-	animate = true;
+	animate = false;
     }
 
     //Default to BFS
