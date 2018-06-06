@@ -42,7 +42,7 @@ public class MazeSolver{
 	if(mode == 2){
 	    frontier = new FrontierPriorityQueue();
 	}
-	if(mode != 0 && mode != 1 && mode != 2){
+	if(mode == 3){
 	    frontier = new FrontierPriorityQueue();
 	    maze.setAStar(true);
 	}
